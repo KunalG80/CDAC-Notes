@@ -1,0 +1,30 @@
+*{
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+ul,ol{
+    list-style: none;
+    padding-left: 0;
+}
+.text-uppercase{
+ text-transform: uppercase;   
+}
+.text-center{
+    text-align: center;
+}
+li{
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+.border{
+    border: 1px solid;
+}
+.float-end{
+    float: right;
+}
+.col-4{
+    width:33.3333%;
+}
+.parent{
+    display:flex;
+}

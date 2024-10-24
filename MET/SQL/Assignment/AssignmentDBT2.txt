@@ -1,0 +1,351 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdac               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> create database ecommerce;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdac               |
+| ecommerce          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> create table cust(
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> 
+mysql> 
+mysql> 
+mysql> CREATE TABLE cust(
+    -> email_address VARCHAR(75) PRIMARY KEY,
+    -> first_name VARCHAR(50),
+    -> last_name VARCHAR(50),
+    -> address1 VARCHAR(50),
+    -> address2 VARCHAR(50),
+    -> customer_zip VARCHAR(10),
+    -> area_code CHAR(3),
+    -> telephone_number CHAR(7));
+ERROR 1046 (3D000): No database selected
+mysql> exit
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdac               |
+| ecommerce          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use ecommerce;
+Database changed
+mysql> CREATE TABLE cust(
+    -> email_address VARCHAR(75) PRIMARY KEY,
+    -> first_name VARCHAR(50),
+    -> last_name VARCHAR(50),
+    -> address1 VARCHAR(50),
+    -> address2 VARCHAR(50),
+    -> customer_zip VARCHAR(10),
+    -> area_code CHAR(3),
+    -> telephone_number CHAR(7));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc cust;
++------------------+-------------+------+-----+---------+-------+
+| Field            | Type        | Null | Key | Default | Extra |
++------------------+-------------+------+-----+---------+-------+
+| email_address    | varchar(75) | NO   | PRI | NULL    |       |
+| first_name       | varchar(50) | YES  |     | NULL    |       |
+| last_name        | varchar(50) | YES  |     | NULL    |       |
+| address1         | varchar(50) | YES  |     | NULL    |       |
+| address2         | varchar(50) | YES  |     | NULL    |       |
+| customer_zip     | varchar(10) | YES  |     | NULL    |       |
+| area_code        | char(3)     | YES  |     | NULL    |       |
+| telephone_number | char(7)     | YES  |     | NULL    |       |
++------------------+-------------+------+-----+---------+-------+
+8 rows in set (0.01 sec)
+
+mysql> insert cust values(
+    -> 'kunalgujar@gmail.com','Kunal','Gujar','Rudra Apartments, Near Borivali East Station','Borivali East, Mumbai','400 089','efr','234 567');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert cust values(
+    -> insert cust values( 'B_allen@rediff.com','Bruce','allen','Lodha Paradise, Near Hotel Chenings','Malad west, Mumbai','405 099','loh','2945876');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'cust values( 'B_allen@rediff.com','Bruce','allen','Lodha Paradise, Near Hotel Ch' at line 2
+mysql> insert cust values( insert cust values( 'B_allen@rediff.com','Bruce','allen','Lodha Paradise, Near Hotel Chenings','Malad west, Mumbai','405 099','loh','2945876');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'cust values( 'B_allen@rediff.com','Bruce','allen','Lodha Paradise, Near Hotel Ch' at line 1
+mysql> insert cust values('B_allen@rediff.com','Bruce','allen','Lodha Paradise, Near Hotel Chenings','Malad west, Mumbai','405 099','loh','2945876');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert cust values('D_v@outlook.com','diablo','valfenrir','Magarpattae, Near Bank of India','Dehu ,Pune','768 345','ert','356776');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_ecommerce |
++---------------------+
+| cust                |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from cust;
++----------------------+------------+-----------+----------------------------------------------+-----------------------+--------------+-----------+------------------+
+| email_address        | first_name | last_name | address1                                     | address2              | customer_zip | area_code | telephone_number |
++----------------------+------------+-----------+----------------------------------------------+-----------------------+--------------+-----------+------------------+
+| B_allen@rediff.com   | Bruce      | allen     | Lodha Paradise, Near Hotel Chenings          | Malad west, Mumbai    | 405 099      | loh       | 2945876          |
+| D_v@outlook.com      | diablo     | valfenrir | Magarpattae, Near Bank of India              | Dehu ,Pune            | 768 345      | ert       | 356776           |
+| kunalgujar@gmail.com | Kunal      | Gujar     | Rudra Apartments, Near Borivali East Station | Borivali East, Mumbai | 400 089      | efr       | 234 567          |
++----------------------+------------+-----------+----------------------------------------------+-----------------------+--------------+-----------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> create table cardinfo(
+    -> card_id INT PRIMARY KEY,
+    -> ccnum varchar(16),
+    -> ccexp date,
+    -> name_on_card varchar(100),
+    -> email_address varchar(75));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert cardinfo values(
+    -> 001,'324KG78B01','2028-01-30','Gujar Kunal Appasaheb','KunalGujar@gmail.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert cardinfo values( 002,'674BAHTD02','2023-01-28','Allen Barry','B_allen@rediff.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert cardinfo values( 002,'00DVILC03','2035-11-11','Velfenrir Diablo','D_v@outlook.com');
+ERROR 1062 (23000): Duplicate entry '2' for key 'cardinfo.PRIMARY'
+mysql> insert cardinfo values( 003,'00DVILC03','2035-11-11','Velfenrir Diablo','D_v@outlook.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from cardinfo;
++---------+------------+------------+-----------------------+----------------------+
+| card_id | ccnum      | ccexp      | name_on_card          | email_address        |
++---------+------------+------------+-----------------------+----------------------+
+|       1 | 324KG78B01 | 2028-01-30 | Gujar Kunal Appasaheb | KunalGujar@gmail.com |
+|       2 | 674BAHTD02 | 2023-01-28 | Allen Barry           | B_allen@rediff.com   |
+|       3 | 00DVILC03  | 2035-11-11 | Velfenrir Diablo      | D_v@outlook.com      |
++---------+------------+------------+-----------------------+----------------------+
+3 rows in set (0.01 sec)
+
+mysql> desc cardinfo;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| card_id       | int          | NO   | PRI | NULL    |       |
+| ccnum         | varchar(16)  | YES  |     | NULL    |       |
+| ccexp         | date         | YES  |     | NULL    |       |
+| name_on_card  | varchar(100) | YES  |     | NULL    |       |
+| email_address | varchar(75)  | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> create table cardtype(
+    -> card_id int PRIMARY KEY,
+    -> card_type varchar(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc cardtype;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| card_id   | int         | NO   | PRI | NULL    |       |
+| card_type | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> insert cardtype values(
+    -> '324KG78B01','BLACK');
+ERROR 1265 (01000): Data truncated for column 'card_id' at row 1
+mysql> drop table cardinfo;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table cardinfo(
+    -> card_id int PRIMARY KEY,
+    -> ccnum varchar(16),
+    -> ccexp date,
+    -> name_on_card varchar(100),
+    -> email_address varchar(75));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert cardinfo values( 001,'324KG78B01','2028-01-30','Gujar Kunal Appasaheb','KunalGujar@gmail.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert cardinfo values( 002,'674BAHTD02','2023-01-28','Allen Barry','B_allen@rediff.com');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert cardinfo values( 003,'00DVILC03','2035-11-11','Velfenrir Diablo','D_v@outlook.com');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc cardinfo;
++---------------+--------------+------+-----+---------+-------+
+| Field         | Type         | Null | Key | Default | Extra |
++---------------+--------------+------+-----+---------+-------+
+| card_id       | int          | NO   | PRI | NULL    |       |
+| ccnum         | varchar(16)  | YES  |     | NULL    |       |
+| ccexp         | date         | YES  |     | NULL    |       |
+| name_on_card  | varchar(100) | YES  |     | NULL    |       |
+| email_address | varchar(75)  | YES  |     | NULL    |       |
++---------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from cardinfo;
++---------+------------+------------+-----------------------+----------------------+
+| card_id | ccnum      | ccexp      | name_on_card          | email_address        |
++---------+------------+------------+-----------------------+----------------------+
+|       1 | 324KG78B01 | 2028-01-30 | Gujar Kunal Appasaheb | KunalGujar@gmail.com |
+|       2 | 674BAHTD02 | 2023-01-28 | Allen Barry           | B_allen@rediff.com   |
+|       3 | 00DVILC03  | 2035-11-11 | Velfenrir Diablo      | D_v@outlook.com      |
++---------+------------+------------+-----------------------+----------------------+
+3 rows in set (0.00 sec)
+
+mysql> create table cardtype(
+    -> card_id int PRIMARY KEY,
+    -> card_type varchar(20));
+ERROR 1050 (42S01): Table 'cardtype' already exists
+mysql> insert cardtype values( '001','BLACK');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert cardtype values( '002','Diamond');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert cardtype values( '003','Gold');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> desc cardtype;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| card_id   | int         | NO   | PRI | NULL    |       |
+| card_type | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from cardtype;
++---------+-----------+
+| card_id | card_type |
++---------+-----------+
+|       1 | BLACK     |
+|       2 | Diamond   |
+|       3 | Gold      |
++---------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> create table local(
+    -> zip varchar(10) PRIMARY KEY,
+    -> city varchar(50),
+    -> state char(2));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert local values('400 089','Borivali East, Mumbai','MH');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert local values('405 099','Malad West, Mumbai','MH');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert local values('768 345','Dehu, Pune','MH');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc local;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| zip   | varchar(10) | NO   | PRI | NULL    |       |
+| city  | varchar(50) | YES  |     | NULL    |       |
+| state | char(2)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from local;
++---------+-----------------------+-------+
+| zip     | city                  | state |
++---------+-----------------------+-------+
+| 400 089 | Borivali East, Mumbai | MH    |
+| 405 099 | Malad West, Mumbai    | MH    |
+| 768 345 | Dehu, Pune            | MH    |
++---------+-----------------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from cust;
++----------------------+------------+-----------+----------------------------------------------+-----------------------+--------------+-----------+------------------+
+| email_address        | first_name | last_name | address1                                     | address2              | customer_zip | area_code | telephone_number |
++----------------------+------------+-----------+----------------------------------------------+-----------------------+--------------+-----------+------------------+
+| B_allen@rediff.com   | Bruce      | allen     | Lodha Paradise, Near Hotel Chenings          | Malad west, Mumbai    | 405 099      | loh       | 2945876          |
+| D_v@outlook.com      | diablo     | valfenrir | Magarpattae, Near Bank of India              | Dehu ,Pune            | 768 345      | ert       | 356776           |
+| kunalgujar@gmail.com | Kunal      | Gujar     | Rudra Apartments, Near Borivali East Station | Borivali East, Mumbai | 400 089      | efr       | 234 567          |
++----------------------+------------+-----------+----------------------------------------------+-----------------------+--------------+-----------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from cardinfo;;
++---------+------------+------------+-----------------------+----------------------+
+| card_id | ccnum      | ccexp      | name_on_card          | email_address        |
++---------+------------+------------+-----------------------+----------------------+
+|       1 | 324KG78B01 | 2028-01-30 | Gujar Kunal Appasaheb | KunalGujar@gmail.com |
+|       2 | 674BAHTD02 | 2023-01-28 | Allen Barry           | B_allen@rediff.com   |
+|       3 | 00DVILC03  | 2035-11-11 | Velfenrir Diablo      | D_v@outlook.com      |
++---------+------------+------------+-----------------------+----------------------+
+3 rows in set (0.01 sec)
+
+ERROR: 
+No query specified
+
+mysql> select * from cardtype;
++---------+-----------+
+| card_id | card_type |
++---------+-----------+
+|       1 | BLACK     |
+|       2 | Diamond   |
+|       3 | Gold      |
++---------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select * from local;
++---------+-----------------------+-------+
+| zip     | city                  | state |
++---------+-----------------------+-------+
+| 400 089 | Borivali East, Mumbai | MH    |
+| 405 099 | Malad West, Mumbai    | MH    |
+| 768 345 | Dehu, Pune            | MH    |
++---------+-----------------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> exit

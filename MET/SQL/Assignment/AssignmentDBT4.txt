@@ -1,0 +1,271 @@
+mysql> show database
+    -> ^C
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdac               |
+| ecommerce          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.05 sec)
+
+mysql> use cdac;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_cdac |
++----------------+
+| dept           |
+| emp            |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> exit
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| cdac               |
+| ecommerce          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use cdac;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------+
+| Tables_in_cdac |
++----------------+
+| dept           |
+| emp            |
++----------------+
+2 rows in set (0.00 sec)
+
+mysql> create table emp2(
+    -> salary,
+    -> empno int,
+    -> ename varchar(20),
+    -> basic_sal numeric(10,2));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+empno int,
+ename varchar(20),
+basic_sal numeric(10,2))' at line 2
+mysql> create table emp2(
+    -> empno int,
+    -> ename varchar(20),
+    -> basic_sal numeric(10,2));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc emp2;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| empno     | int           | YES  |     | NULL    |       |
+| ename     | varchar(20)   | YES  |     | NULL    |       |
+| basic_sal | decimal(10,2) | YES  |     | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+3 rows in set (0.07 sec)
+
+mysql> alter table emp2
+    -> add hra numeric(10,2);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp2;
+Empty set (0.01 sec)
+
+mysql> desc table
+    -> ^C
+mysql> desc tables;
+ERROR 1146 (42S02): Table 'cdac.tables' doesn't exist
+mysql> desc emp2;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| empno     | int           | YES  |     | NULL    |       |
+| ename     | varchar(20)   | YES  |     | NULL    |       |
+| basic_sal | decimal(10,2) | YES  |     | NULL    |       |
+| hra       | decimal(10,2) | YES  |     | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> 
+mysql> alter table emp2
+    -> drop hra;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> insert emp2 values(1,'Kunal',40000),(2,'sushant',34000),(3,'ketan',84567);)
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+    -> select * from tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')
+select * from tables' at line 1
+mysql> ) select * from emp2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') select * from emp2' at line 1
+mysql> ) select * from emp2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ') select * from emp2' at line 1
+mysql> select * from emp2;;
++-------+---------+-----------+
+| empno | ename   | basic_sal |
++-------+---------+-----------+
+|     1 | Kunal   |  40000.00 |
+|     2 | sushant |  34000.00 |
+|     3 | ketan   |  84567.00 |
++-------+---------+-----------+
+3 rows in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql> alter table emp2
+    -> add hra numeric (10,2);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp2;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| empno     | int           | YES  |     | NULL    |       |
+| ename     | varchar(20)   | YES  |     | NULL    |       |
+| basic_sal | decimal(10,2) | YES  |     | NULL    |       |
+| hra       | decimal(10,2) | YES  |     | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> alter table emp2
+    -> add comm numeric (10,2);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp2;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| empno     | int           | YES  |     | NULL    |       |
+| ename     | varchar(20)   | YES  |     | NULL    |       |
+| basic_sal | decimal(10,2) | YES  |     | NULL    |       |
+| hra       | decimal(10,2) | YES  |     | NULL    |       |
+| comm      | decimal(10,2) | YES  |     | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table emp2
+    -> drop comm;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table emp2
+    -> add comm numeric(10,2) after ename;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp2;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| empno     | int           | YES  |     | NULL    |       |
+| ename     | varchar(20)   | YES  |     | NULL    |       |
+| comm      | decimal(10,2) | YES  |     | NULL    |       |
+| basic_sal | decimal(10,2) | YES  |     | NULL    |       |
+| hra       | decimal(10,2) | YES  |     | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> alter table emp2
+    -> drop hra;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table emp2
+    -> change ename name varchar(20);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp2;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| empno     | int           | YES  |     | NULL    |       |
+| name      | varchar(20)   | YES  |     | NULL    |       |
+| comm      | decimal(10,2) | YES  |     | NULL    |       |
+| basic_sal | decimal(10,2) | YES  |     | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> alter table emp2
+    -> add primary key (empno);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc emp2;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| empno     | int           | NO   | PRI | NULL    |       |
+| name      | varchar(20)   | YES  |     | NULL    |       |
+| comm      | decimal(10,2) | YES  |     | NULL    |       |
+| basic_sal | decimal(10,2) | YES  |     | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table emp2
+    -> modify basic_sal numeric (13,2);
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc emp2;
++-----------+---------------+------+-----+---------+-------+
+| Field     | Type          | Null | Key | Default | Extra |
++-----------+---------------+------+-----+---------+-------+
+| empno     | int           | NO   | PRI | NULL    |       |
+| name      | varchar(20)   | YES  |     | NULL    |       |
+| comm      | decimal(10,2) | YES  |     | NULL    |       |
+| basic_sal | decimal(13,2) | YES  |     | NULL    |       |
++-----------+---------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select ename, basic_sal from emp2
+    -> ^C
+mysql> select ename, round(basic_sal,-3) from emp2;
+ERROR 1054 (42S22): Unknown column 'ename' in 'field list'
+mysql> select * from emp2
+    -> where round(basic_sal,-3);
++-------+---------+------+-----------+
+| empno | name    | comm | basic_sal |
++-------+---------+------+-----------+
+|     1 | Kunal   | NULL |  40000.00 |
+|     2 | sushant | NULL |  34000.00 |
+|     3 | ketan   | NULL |  84567.00 |
++-------+---------+------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select ename, round(basic_sal,-3) from emp2;
+ERROR 1054 (42S22): Unknown column 'ename' in 'field list'
+mysql> select name, round(basic_sal,-3) from emp2;
++---------+---------------------+
+| name    | round(basic_sal,-3) |
++---------+---------------------+
+| Kunal   |               40000 |
+| sushant |               34000 |
+| ketan   |               85000 |
++---------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> exit

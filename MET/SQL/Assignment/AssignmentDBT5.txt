@@ -1,0 +1,444 @@
+mysql> use cdac1;
+Database changed
+mysql> delimiter//
+    -> create procedure Asg_1()
+    -> begin
+    -> declare result varchar(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedure Asg_1()
+begin
+declare result varchar(20)' at line 1
+mysql> select @vsal:=sal from emp where ename='smith';
++------------+
+| @vsal:=sal |
++------------+
+|     800.00 |
++------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> if @vsal >= 5000 then
+    -> set @result:= 'Excellent Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'if @vsal >= 5000 then
+set @result:= 'Excellent Salary'' at line 1
+mysql> elseif @vsal between 5000 and 4000 then
+    -> set @result:= 'Good Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elseif @vsal between 5000 and 4000 then
+set @result:= 'Good Salary'' at line 1
+mysql> elseif @vsal between 4000 and 3000 then
+    -> set @result:= 'Average Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elseif @vsal between 4000 and 3000 then
+set @result:= 'Average Salary'' at line 1
+mysql> else
+    -> set @result:= 'Dumb Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'else
+set @result:= 'Dumb Salary'' at line 1
+mysql> end if;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end if' at line 1
+mysql> select @result;
++------------------+
+| @result          |
++------------------+
+|              |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter//
+    -> create procedure Asg_1()
+    -> begin
+    -> declare result varchar(20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedure Asg_1()
+begin
+declare result varchar(20)' at line 1
+mysql> select @vsal:=sal from emp where ename='smith';
++------------+
+| @vsal:=sal |
++------------+
+|     800.00 |
++------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> if @vsal >= 5000 then
+    -> set @result:= 'Excellent Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'if @vsal >= 5000 then
+set @result:= 'Excellent Salary'' at line 1
+mysql> elseif @vsal between 5000 and 4000 then
+    -> set @result:= 'Good Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elseif @vsal between 5000 and 4000 then
+set @result:= 'Good Salary'' at line 1
+mysql> elseif @vsal between 4000 and 3000 then
+    -> set @result:= 'Average Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elseif @vsal between 4000 and 3000 then
+set @result:= 'Average Salary'' at line 1
+mysql> else
+    -> set @result:= 'Dumb Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'else
+set @result:= 'Dumb Salary'' at line 1
+mysql> end if;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end if' at line 1
+mysql> select @result;
++------------------+
+| @result          |
++------------------+
+|              |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter//
+    -> create procedure Asg_1()
+    -> begin
+    -> declare result varchar(30);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedure Asg_1()
+begin
+declare result varchar(30)' at line 1
+mysql> select @vsal:=sal from emp where ename='smith';
++------------+
+| @vsal:=sal |
++------------+
+|     800.00 |
++------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> if @vsal >= 5000 then
+    -> set @result:= 'Excellent Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'if @vsal >= 5000 then
+set @result:= 'Excellent Salary'' at line 1
+mysql> elseif @vsal between 5000 and 4000 then
+    -> set @result:= 'Good Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elseif @vsal between 5000 and 4000 then
+set @result:= 'Good Salary'' at line 1
+mysql> elseif @vsal between 4000 and 3000 then
+    -> set @result:= 'Average Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'elseif @vsal between 4000 and 3000 then
+set @result:= 'Average Salary'' at line 1
+mysql> else
+    -> set @result:= 'Dumb Salary';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'else
+set @result:= 'Dumb Salary'' at line 1
+mysql> end if;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end if' at line 1
+mysql> select @result;
++------------------+
+| @result          |
++------------------+
+|              |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> ^C
+mysql> ^C
+mysql> delimiter //
+mysql> create procedure Asg_1()
+    -> begin
+    -> declare result varchar(30);
+    -> select @vsal:=sal from emp where ename='smith';
+    -> if @vsal >= 5000 then
+    -> set @result:= 'Excellent Salary';
+    -> elseif @vsal between 5000 and 4000 then
+    -> set @result:= 'Good Salary';
+    -> elseif @vsal between 4000 and 3000 then
+    -> set @result:= 'Average Salary';
+    -> else
+    -> set @result:= 'Dumb Salary';
+    -> end if;
+    -> select @result;
+    -> end;
+    -> //
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> delimiter;
+    -> call Asg_1;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter;
+    -> delimiter;
+    -> call Asg_1;
+    -> 
+    -> 
+    -> 
+    -> 
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter;
+    -> call Asg_1();
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter;
+    -> call Asg_1();
+    -> 
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> drop procedure Asg_1;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter;
+    -> drop procedure Asg_1;
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter;
+    -> call Asg_1();
+    -> //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter;call Asg_1()' at line 1
+mysql> delimiter ;
+mysql> call Asg_1();
++------------+
+| @vsal:=sal |
++------------+
+|     800.00 |
++------------+
+1 row in set (0.00 sec)
+
++-------------+
+| @result     |
++-------------+
+| Dumb Salary |
++-------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter //
+mysql> create procedure Asg_2()
+    -> begin
+    -> declare result varchar(30);
+    -> set @vscore:=65;
+    -> if @vscore >= 75 then
+    -> set @result:= 'distinction';
+    -> elseif @vscore between 60 and 75 then
+    -> set @result:= 'First Class';
+    -> elseif @vscore between 60 and 50 then
+    -> set @result:= 'Second Class';
+    -> elseif @vscore between 50 and 35 then
+    -> set @result:= 'pass';
+    -> else
+    -> set @result:= 'DUCK DUCK DUCK......';
+    -> end if;
+    -> select @result;
+    -> end;
+    -> //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> 
+mysql> delimiter ;
+mysql> call Asg_2();
++-------------+
+| @result     |
++-------------+
+| First Class |
++-------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter //
+mysql> create procedure Asg_2()
+    -> begin
+    -> declare result varchar(30);
+    -> set @vscore:=101;
+    -> if @vscore >= 75 then
+    -> set @result:= 'distinction';
+    -> elseif @vscore between 60 and 75 then
+    -> set @result:= 'First Class';
+    -> elseif @vscore between 60 and 50 then
+    -> set @result:= 'Second Class';
+    -> elseif @vscore between 50 and 35 then
+    -> set @result:= 'pass';
+    -> else
+    -> set @result:= 'DUCK DUCK DUCK......';
+    -> end if;
+    -> select @result;
+    -> end;
+    -> //
+ERROR 1304 (42000): PROCEDURE Asg_2 already exists
+mysql> 
+mysql> delimiter ;
+mysql> call Asg_2();
++-------------+
+| @result     |
++-------------+
+| First Class |
++-------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> 
+mysql> delimiter //
+mysql> create procedure Asg_2()
+    -> begin
+    -> declare result varchar(30);
+    -> set @vscore:=101;
+    -> if @vscore >= 75 then
+    -> set @result:= 'distinction';
+    -> elseif @vscore between 60 and 75 then
+    -> set @result:= 'First Class';
+    -> elseif @vscore between 60 and 50 then
+    -> set @result:= 'Second Class';
+    -> elseif @vscore between 50 and 35 then
+    -> set @result:= 'pass';
+    -> else
+    -> set @result:= 'DUCK DUCK DUCK......';
+    -> end if;
+    -> select @result;
+    -> end;
+    -> //
+ERROR 1304 (42000): PROCEDURE Asg_2 already exists
+mysql> delimiter ;
+mysql> drop procedure Asg_2;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter //
+mysql> create procedure Asg_2()
+    -> begin
+    -> declare result varchar(30);
+    -> set @vscore:=101;
+    -> if @vscore >= 75 then
+    -> set @result:= 'distinction';
+    -> elseif @vscore between 60 and 75 then
+    -> set @result:= 'First Class';
+    -> elseif @vscore between 60 and 50 then
+    -> set @result:= 'Second Class';
+    -> elseif @vscore between 50 and 35 then
+    -> set @result:= 'pass';
+    -> else
+    -> set @result:= 'DUCK DUCK DUCK......';
+    -> end if;
+    -> select @result;
+    -> end;
+    -> //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> call Asg_2();
++-------------+
+| @result     |
++-------------+
+| distinction |
++-------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> 
+mysql> delimiter ;
+mysql> drop procedure Asg_2;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter //
+mysql> create procedure Asg_2()
+    -> begin
+    -> declare result varchar(30);
+    -> set @vscore:=1;
+    -> if @vscore >= 75 then
+    -> set @result:= 'distinction';
+    -> elseif @vscore between 60 and 75 then
+    -> set @result:= 'First Class';
+    -> elseif @vscore between 60 and 50 then
+    -> set @result:= 'Second Class';
+    -> elseif @vscore between 50 and 35 then
+    -> set @result:= 'pass';
+    -> else
+    -> set @result:= 'DUCK DUCK DUCK......';
+    -> end if;
+    -> select @result;
+    -> end;
+    -> //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter ;
+mysql> call Asg_2();
++----------------------+
+| @result              |
++----------------------+
+| DUCK DUCK DUCK...... |
++----------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> 
+mysql> delimiter //
+mysql> create procedure Asg_3()
+    -> begin
+    -> declare result varchar(30);
+    -> set @num = 4556;
+    -> if @num > 0 then
+    -> set @result:= '+ve';
+    -> elseif @num < 0 then
+    -> set @result:= '-ve';
+    -> else
+    -> set @result:= '0';
+    -> end if;
+    -> select @result;
+    -> end;
+    -> //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> 
+mysql> ^C
+mysql> ^C
+mysql> 
+mysql> delimiter ;
+mysql> call Asg_3();
++---------+
+| @result |
++---------+
+| +ve     |
++---------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter //
+mysql> create procedure Asg_4(in vno varchar(20) , vsal numeric(10,2))
+    -> begin
+    -> select @vsal := sal from emp
+    -> where @vno=deptno;
+    -> if sal>@vsal then
+    -> 
+    -> end if;
+    -> end;
+    -> //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end if;
+end' at line 7
+mysql> exit
+mysql> exit

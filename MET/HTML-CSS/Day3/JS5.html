@@ -1,0 +1,12 @@
+<script>
+    "use strict";
+    // Home Loan EMI Calculator
+
+    var p= 2000000;
+    var n= 30;
+    n=n*12;
+    var r=8.67;
+    r=r/12/100;
+    // p x R x (1+R)^N /[(1+R)^N-1]
+    console.log(p*r*(1+r)**n/((1+r)**n-1));
+</script>

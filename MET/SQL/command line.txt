@@ -1,0 +1,387 @@
+DAY 1
+
+create database cdac1;
+
+show databases;
+
+use cdac1;
+
+create table dept(
+deptno int,
+dname varchar(20),
+loc varchar(20)); 
+
+desc cdac1;
+
+insert into dept values(10,'acct','mum'),
+(20,'mkt','bang'),
+(30,'fin','hyd'),
+(40,'oper','nashik');
+
+select * from dept;
+
+create table emp(
+empno int,
+ename varchar(20),
+sal numeric(10,3),
+deptno int,
+hiredate date);
+
+insert into emp values(10,'saransh',1234.567,10,'1998-01-01'),
+(20,'ayansh',1234.567,30,'2011-05-01'),
+(30,'amit',9898.867,40,'2018-11-01'),
+(40,'ash',6778.545,30,'2021-08-23'),
+(5,'ansh',1564.567,20,'2024-12-01');
+
+select * from emp;
+
+create table cust(
+custid int,
+cname varchar(20),
+address varchar(20),
+panno char(10));
+
+
+insert into cust values(10,'saransh','bhopal','ghtryt8907h'),
+(20,'sara','bihar','fghrt9087o'),
+(30,'ansh','bang','nhjgj5687k'),
+(40,'ans','mum','fgret2876l'),
+(50,'kunal','guna','mhik1897e');
+
+select * from cust;
+
+
+
+display loc col
+
+to do any updataion in table we use this syntax
+ update emp set sal = sal + 5000 WHERE empno=50;
+
+
+delete from emp
+where empno = 4;
+
+
+
+delete from emp
+where ename = 'ansh';
+
+
+
+delete from emp
+where hiredate > '2024-11-01';
+
+
+distinct
+used to avoid repeated values it surpasses the pepeatation and shoiw the unique values
+
+select distinct deptno from emp;
+
+
+select * from emp where ename='smith';
+
+
+NOTE :- data is not case sensitive. we use both capital and small letters
+
+
+
+
+
+DAY 2
+
+
+emp who are not receive the comm
+
+select ename , comm from emp
+where comm is null;
+
+emp who received the comm
+
+select ename , comm from emp
+where comm is not null;
+
+to display first 2 rows
+
+select 8 from emp
+limit 2;
+
+To skip first 2 rows and display next 3 rows
+
+select * from emp
+limit (2,3);
+
+display ename who are from deptno 10 and who are all managers and from dept no 20 and who are analyst
+
+select ename , deptno from emp
+where (deptno=10 and job='manager') or (deptno=20 and job='analyst');
+
+display the name of emp whose sal >= 1000 and sal <= 2000
+
+select ename , sal from emp
+where sal between 1000 and 2000;
+
+display the name of emp whose sal > 1000 and sal < 2000
+
+select ename , sal from emp
+where sal not between 1000 and 2000;
+
+display the name of emp joined in 2012
+
+select ename, hiredate from emp
+where hiredate between '2012-01-01' and '2012-12-31';
+
+display the name of emp from dept no 10 and 20
+
+select ename fro emp
+where deptno in (10,20);
+
+display the name of emp not from dept no 10 and 20
+
+select ename fro emp
+where deptno not in (10,20);
+
+display name of employee whose name starts with A
+
+select ename from emp
+where job in ('manager','analyst','salesman')
+
+display name of employee whose name starts with A
+
+select ename from emp
+where ename like 'A%';
+
+display name of employee whose name starts with A
+
+select ename from emp
+where ename like '%R';
+
+display name of employee whose name starts with A
+
+select ename from emp
+where ename like '%A%';
+
+display name of employee whose name starts with A
+
+select ename from emp
+where ename like '_____';
+
+display name of employee whose name starts with A
+
+select ename from emp
+where ename like '__R%';
+
+display name of employee whose name starts with A
+
+select ename from emp
+where ename like '__R__R%';
+
+Day 3
+
+Day 4
+
+Day 5
+
+VIEW
+
+create view v3
+as 
+select empno , sal, comm from emp
+where sal between 1000 and 2000;
+
+select * from v3;
+
+create view v1
+as 
+select empno, ename, hiredate from e
+
+
+
+
+
+
+
+
+
+
+mp;
+
+select * from v1;
+
+create view v2
+as 
+select empno, ename, hiredate from emp
+where deptno(10,20) and sal>500;
+
+select * from v2;
+
+insert into v2 values(1111,'akash','2024-01-01');
+
+drop view v3;
+
+grant all on emp to hr;
+
+grant select on v1 to hr;
+
+revoke select on v1 from hr;
+
+INDEX
+
+create index ename_id on emp(ename);
+
+select * from emp where ename = 'JONES';
+
+create index sal_id1 on emp(sal desc);
+
+select * from emp where sal > 465;
+
+drop index sal_id1 on emp;
+
+create synonym e for employees_table;
+
+select * from e;
+
+drop synonym e;
+
+create table emp3(
+empno int,
+ename varchar(20),
+sal int);
+
+
+start transaction;
+insert into emp3 values(1,'saransh',5000);
+insert into emp3 values(1,'saransh',5000);
+rollback;
+
+start transaction;
+insert into emp3 values(1,'saransh',5000);
+commit;
+
+Day 6
+
+Inner Join
+
+select ename, sal, dname, loc from emp e, dept d
+where e.deptno=d.deptno;
+
+select ename, sal, dname, loc, d.deptno from emp e, dept d
+where e.deptno=d.deptno and sal between 1000 and 2000 and (e.deptno in (10,20));
+
+create table location(
+loc varchar(20),
+remark varchar(20));
+
+insert into location values('new york','remark1');
+insert into location values('dallas','remark2');
+insert into location values('chichago','remark3');
+insert into location values('boston','remark4');
+
+select ename, sal, dname, d.deptno, l.loc, remark from emp e, dept d, location l
+where e.deptno=d.deptno and d.loc=l.loc;
+
+outer join
+
+left
+
+select ename, sal, dname, d.deptno, loc from emp e
+left join
+dept d
+on (e.deptno=d.deptno);
+
+right
+
+select ename, sal, dname, d.deptno, loc from emp e
+right join
+dept d
+on (e.deptno=d.deptno);
+
+full
+
+select ename, sal, dname, d.deptno, loc from emp e
+full join
+dept d
+on (e.deptno=d.deptno);
+
+cross
+
+select * from emp
+
+Day 7
+
+variable
+
+set @a:=100;
+set @b:=300;
+select @a;
+select @b;
+
+set @eno:=1;
+set @ename:='KUNAL';
+select @eno;
+select @ename;
+
+select @max:=max(sal) from emp
+where deptno=10;
+select @max;
+
+select @min:=min(sal) from emp
+where deptno=10;
+select @min;
+
+select @vsal:=sal from emp
+where ename='smith';
+select @vsal;
+
+Stored Procedures
+
+delimiter //
+create procedure proc1()
+begin
+	select * from emp;
+	select * from dept;
+	select * from emp where deptno=10;
+end;
+//
+
+delimiter ;
+call proc1();
+
+delimiter ;
+drop procedure proc1;
+
+delimiter $$
+create procedure proc1()
+begin
+update emp set sal = sal + sal*0.2 where ename='SMITH';
+update emp set sal = sal + sal*0.3 where ename='ALLEN';
+delete from emp where ename='ward';
+end;
+$$
+
+delimiter ;
+call proc1();
+
+delimiter ;
+drop procedure proc1;
+
+if condition
+
+delimiter $$
+create procedure proc2()
+begin
+declare result varchar(20);
+set @num1:=56457;
+set @num2:=98453;
+if @a>@b then
+set @result:='a is greater';
+elseif @a<@b then
+set @result:='b is greater';
+else
+set @result:='Both are same';
+end if;
+select @result;
+end;
+$$
+
+delimiter ;
+call proc2;

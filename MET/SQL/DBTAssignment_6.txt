@@ -1,0 +1,6 @@
+mysql> rftjy
+    -> exit
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> exit

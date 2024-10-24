@@ -1,0 +1,341 @@
+mysql> create table emp1(
+    -> empno int,
+    -> ename varchar(20),
+    -> sal numeric(10,2)'
+    '> deptno int);
+    '> 
+    '> ^C
+mysql> create table emp1(
+    -> empno int,
+    -> sal numeric(10,2),
+    -> ename varchar(20),
+    -> deptno int);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into emp1(1,40000,'kunal',20),
+    -> ^C
+mysql> insert into emp1(1,40000,'kunal',20);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,40000,'kunal',20)' at line 1
+mysql> insert into emp1('1',40000,'kunal','20');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''1',40000,'kunal','20')' at line 1
+mysql> insert into emp1 values(1,40000,'kunal',20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp1;
++-------+----------+-------+--------+
+| empno | sal      | ename | deptno |
++-------+----------+-------+--------+
+|     1 | 40000.00 | kunal |     20 |
++-------+----------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> insert into emp1 values(2,35000,30);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into emp1 values(2,35000,null,30);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from emp1;
++-------+----------+-------+--------+
+| empno | sal      | ename | deptno |
++-------+----------+-------+--------+
+|     1 | 40000.00 | kunal |     20 |
+|     2 | 35000.00 | NULL  |     30 |
++-------+----------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into emp1(empno,sal,ename) values(1,40000,'kual');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp1;
++-------+----------+-------+--------+
+| empno | sal      | ename | deptno |
++-------+----------+-------+--------+
+|     1 | 40000.00 | kunal |     20 |
+|     2 | 35000.00 | NULL  |     30 |
+|     1 | 40000.00 | kual  |   NULL |
++-------+----------+-------+--------+
+3 rows in set (0.00 sec)
+
+mysql> create table t1(
+    -> empno int;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> ^C
+mysql> create table t1(
+    -> empno int,
+    -> ename varchar;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+mysql> create table t1(
+    -> empno int;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2
+mysql> create table t1(
+    -> empno int,
+    -> ename varchar,
+    -> photo blob);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+photo blob)' at line 3
+mysql> create table dept1
+    -> ^C
+mysql> create table dept1(
+    -> ^C
+mysql> ^C
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> create table dept1(
+    -> deptno decimal(2)'
+    '> ^C
+mysql> create table dept1(
+    -> deptno decimal(2),
+    -> dname varchar(20),
+    -> loc varchar(20));
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> drop table dept1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table dept1(
+    -> deptno decimal(2) primary key,
+    -> dname varchar(20) not null,
+    -> loc varchar(20) not null);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into dept1 values(10,'acct','mum'),
+    -> (20,'fin','nashik');
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from dept1;
++--------+-------+--------+
+| deptno | dname | loc    |
++--------+-------+--------+
+|     10 | acct  | mum    |
+|     20 | fin   | nashik |
++--------+-------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into dept1 values(10,'acct',null);
+ERROR 1048 (23000): Column 'loc' cannot be null
+mysql> create table emp1(
+    -> empno int primary key,
+    -> ename varchar not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null' at line 3
+mysql> create table emp1(
+    -> empno int primary key,
+    -> ename varchar not null,
+    -> sal numeric(10,2) check(sal>30000),
+    -> deptno decimal(2),
+    -> city varchar (20),
+    -> ^C
+mysql>  create table emp1(
+    ->     -> empno int primary key,
+    ->     -> ename varchar not null,
+    ->     -> sal numeric(10,2) check(sal>30000),
+    ->     -> deptno decimal(2),
+    ->     -> city varchar (20) default 'mum'
+    -> check(city in ('pune' , 'mum' , 'bang')),
+    -> pan char (10) unique,
+    -> foreign key(deptno) reference dept1(deptno));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> empno int primary key,
+    -> ename varchar not null,
+    -> sal numeric(10,2' at line 2
+mysql> create table emp1(
+    ->      empno int primary key,
+    ->      ename varchar not null,
+    ->      sal numeric(10,2) check(sal>30000),
+    ->      deptno decimal(2),
+    ->      city varchar (20) default 'mum'
+    ->      check(city in ('pune' , 'mum' , 'bang')),
+    ->      pan char (10) unique,
+    ->      foreign key(deptno) reference dept1(deptno));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null,
+     sal numeric(10,2) check(sal>30000),
+     deptno decimal(2),
+     ' at line 3
+mysql> create table emp1(
+    ->      empno int primary key,
+    ->      ename varchar(20) not null,
+    ->      sal numeric(10,2) check(sal>30000),
+    ->      deptno decimal(2),
+    ->      city varchar (20) default 'mum'
+    ->      check(city in ('pune' , 'mum' , 'bang')),
+    ->      pan char (10) unique,
+    ->      foreign key(deptno) reference dept1(deptno));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'reference dept1(deptno))' at line 9
+mysql>      foreign key(deptno) reference dept1(deptno));0.
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'foreign key(deptno) reference dept1(deptno))' at line 1
+    -> 
+    -> 
+    -> 
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> create table emp1(
+    ->      empno int primary key,
+    ->      ename varchar(20) not null,
+    ->      sal numeric(10,2) check(sal>30000),
+    ->      deptno decimal(2),
+    ->      city varchar (20) default 'mum'
+    ->      check(city in ('pune' , 'mum' , 'bang')),
+    ->      pan char (10) unique,
+    ->      foreign key(deptno) references dept1(deptno));
+ERROR 1050 (42S01): Table 'emp1' already exists
+mysql> drop table emp1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table emp1(
+    ->      empno int primary key,
+    ->      ename varchar(20) not null,
+    ->      sal numeric(10,2) check(sal>30000),
+    ->      deptno decimal(2),
+    ->      city varchar (20) default 'mum'
+    ->      check(city in ('pune' , 'mum' , 'bang')),
+    ->      pan char (10) unique,
+    ->      foreign key(deptno) references dept1(deptno));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_cdac1 |
++-----------------+
+| dept            |
+| dept1           |
+| emp             |
+| emp1            |
++-----------------+
+4 rows in set (0.02 sec)
+
+mysql> select * from emp1;
+Empty set (0.00 sec)
+
+mysql> insert into emp1 values(1,'saransh',40000,30,default,'p001');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`cdac1`.`emp1`, CONSTRAINT `emp1_ibfk_1` FOREIGN KEY (`deptno`) REFERENCES `dept1` (`deptno`))
+mysql>  insert into emp1 values(1,'saransh',20000,30,default,'p001');
+ERROR 3819 (HY000): Check constraint 'emp1_chk_1' is violated.
+mysql> insert into emp1 values(1,'saransh',20000,30,default,'p001');
+ERROR 3819 (HY000): Check constraint 'emp1_chk_1' is violated.
+mysql> insert into emp1 values(1,'saransh',70000,30,default,'p001');
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`cdac1`.`emp1`, CONSTRAINT `emp1_ibfk_1` FOREIGN KEY (`deptno`) REFERENCES `dept1` (`deptno`))
+mysql>  insert into emp1 values(1,'saransh',20000,20,default,'p001');
+ERROR 3819 (HY000): Check constraint 'emp1_chk_1' is violated.
+mysql> insert into emp1 values(1,'saransh',20000,20,default,'p001');
+ERROR 3819 (HY000): Check constraint 'emp1_chk_1' is violated.
+mysql>  insert into emp1 values(1,'saransh',40000,20,default,'p001');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> exit;
+mysql> select sal numeric(10,2) check(sal between 30000 and 300000);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'numeric(10,2) check(sal between 30000 and 300000)' at line 1
+mysql> create table emp(
+    -> ^C
+mysql> create table emp2(
+    -> empno int auto_increment primary key'
+    '> ^C
+mysql> create table emp2(
+    -> empno int auto_increment primary key,
+    -> ename varchar(20),
+    -> sal numeric(10,2));
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> insert into emp2 values(default,'pr',45872);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from emp2;
++-------+-------+----------+
+| empno | ename | sal      |
++-------+-------+----------+
+|     1 | pr    | 45872.00 |
++-------+-------+----------+
+1 row in set (0.00 sec)
+
+mysql> drop table emp2;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> drop table emp1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> drop table dept1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> drop table dept2;
+ERROR 1051 (42S02): Unknown table 'cdac1.dept2'
+mysql> create table emp1(
+    -> empno int,
+    -> stdate date,
+    -> enddate date,
+    -> primary key (empno,stdate),
+    -> check(stdate<=enddate));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into emp1(
+    -> 1,'2024-03-10','2023-01-19');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1,'2024-03-10','2023-01-19')' at line 2
+mysql> insert into emp1 values(
+    -> 1,'2024-03-10','2023-01-19');
+ERROR 3819 (HY000): Check constraint 'emp1_chk_1' is violated.
+mysql> insert into emp1 values(
+    -> 1,'2024-03-10','2024-05-19');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> drop table emp1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> character/string functions
+    -> 
+    -> ^C
+mysql> 
+mysql> 
+mysql> 
+mysql> select ucase('johncena');
++-------------------+
+| ucase('johncena') |
++-------------------+
+| JOHNCENA          |
++-------------------+
+1 row in set (0.01 sec)
+
+mysql> select lcase('ASGARD');
++-----------------+
+| lcase('ASGARD') |
++-----------------+
+| asgard          |
++-----------------+
+1 row in set (0.04 sec)
+
+mysql> select ucase(lcase('ASGARD'));
++------------------------+
+| ucase(lcase('ASGARD')) |
++------------------------+
+| ASGARD                 |
++------------------------+
+1 row in set (0.00 sec)
+
+mysql> select lcase(ename) from emp;
++--------------+
+| lcase(ename) |
++--------------+
+| smith        |
+| allen        |
+| ward         |
+| jones        |
+| martin       |
+| blake        |
+| clark        |
+| scott        |
+| king         |
+| turner       |
+| adams        |
+| james        |
+| ford         |
+| miller       |
++--------------+
+14 rows in set (0.04 sec)
+
+mysql> exit

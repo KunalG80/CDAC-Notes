@@ -1,0 +1,1140 @@
+mysql> use cdac1;
+Database changed
+mysql> set @a:=100;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set @b:=300;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|  100 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select @b;
++------+
+| @b   |
++------+
+|  300 |
++------+
+1 row in set (0.00 sec)
+
+mysql> set @eno:=1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set @ename:='KUNAL';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @eno;
++------+
+| @eno |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
+mysql> select @ename;
++--------+
+| @ename |
++--------+
+| KUNAL  |
++--------+
+1 row in set (0.00 sec)
+
+mysql> select @max=max(sal) from emp
+    -> where deptno=10;
++---------------+
+| @max=max(sal) |
++---------------+
+|          NULL |
++---------------+
+1 row in set (0.02 sec)
+
+mysql> select @max;
++------------+
+| @max       |
++------------+
+|        |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select@max;
++------------+
+| @max       |
++------------+
+|        |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++-----------------+
+| Tables_in_cdac1 |
++-----------------+
+| dept            |
+| emp             |
+| emp3            |
+| location        |
++-----------------+
+4 rows in set (0.01 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.01 sec)
+
+mysql> select @max:=max(sal) from emp
+    -> where deptno=10;
++----------------+
+| @max:=max(sal) |
++----------------+
+|        5000.00 |
++----------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select @max;
++---------+
+| @max    |
++---------+
+| 5000.00 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select @min:=min(sal) from emp
+    -> where deptno=10;
++----------------+
+| @min:=min(sal) |
++----------------+
+|        1300.00 |
++----------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select @min;
++---------+
+| @min    |
++---------+
+| 1300.00 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select @vsal:=sal from emp
+    -> where ename='smith';
++------------+
+| @vsal:=sal |
++------------+
+|     800.00 |
++------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql> select @vsal;
++--------+
+| @vsal  |
++--------+
+| 800.00 |
++--------+
+1 row in set (0.00 sec)
+
+mysql> delimiter//
+    -> create procedures proc1()
+    -> begin
+    -> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedures proc1()
+begin
+select * from emp' at line 1
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=10;
++-------+--------+-----------+------+------------+---------+------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> set autocommit=0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '//
+set autocommit=0' at line 1
+mysql> set auto commit=0;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'commit=0' at line 1
+mysql> set autocomit=0;
+ERROR 1193 (HY000): Unknown system variable 'autocomit'
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter//
+    -> create procedures proc1()
+    -> begin
+    -> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedures proc1()
+begin
+select * from emp' at line 1
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=10;
++-------+--------+-----------+------+------------+---------+------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> 
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter//
+    -> create procedures proc1()
+    -> begin
+    -> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedures proc1()
+begin
+select * from emp' at line 1
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=10;
++-------+--------+-----------+------+------------+---------+------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit =0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter//
+    -> create procedures proc1()
+    -> begin
+    -> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedures proc1()
+begin
+select * from emp' at line 1
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=10;
++-------+--------+-----------+------+------------+---------+------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter//
+    -> create procedure proc1()
+    -> begin
+    -> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedure proc1()
+begin
+select * from emp' at line 1
+mysql> delimiter//
+    -> create procedures proc1()
+    -> begin
+    -> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedures proc1()
+begin
+select * from emp' at line 1
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp where deptno=10;
++-------+--------+-----------+------+------------+---------+------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> ^C
+mysql> ^C
+mysql> delimiter//
+    -> create procedures proc1()
+    -> begin
+    -> select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedures proc1()
+begin
+select * from emp' at line 1
+mysql> delimiter//
+    -> create procedures proc1()
+    -> begin
+    -> 	select * from emp;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'delimiter//create procedures proc1()
+begin
+	select * from emp' at line 1
+mysql> 	select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> 	select * from emp where deptno=10;
++-------+--------+-----------+------+------------+---------+------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> end;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> //
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter //
+mysql> create procedure proc1()
+    -> begin
+    -> 	select * from emp;
+    -> 	select * from dept;
+    -> 	select * from emp where deptno=10;
+    -> end;
+    -> //
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> delimiter ;
+mysql> call proc1();
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.01 sec)
+
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.03 sec)
+
++-------+--------+-----------+------+------------+---------+------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm | deptno |
++-------+--------+-----------+------+------------+---------+------+--------+
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 | NULL |     10 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 | NULL |     10 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 | NULL |     10 |
++-------+--------+-----------+------+------------+---------+------+--------+
+3 rows in set (0.03 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> delimiter ;
+mysql> drop procedure proc1();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> delimiter ;
+mysql> drop procedure proc1();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> delimiter;
+ERROR: 
+DELIMITER must be followed by a 'delimiter' character or string
+mysql> drop procedure proc1();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '()' at line 1
+mysql> delimiter ;
+mysql> drop procedure proc1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter $$
+mysql> create procedure proc1()
+    -> begin
+    -> update emp set sal = sal + sal*0.2 where ename='SMITH';
+    -> update emp set sal = sal + sal*0.3 where ename='ALLEN';
+    -> delete from emp where ename='ward';
+    -> end;
+    -> $$
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select * from emp;
+    -> ^C
+mysql> ^C
+mysql> select * from emp;
+    -> select * from emp;
+    -> //
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter ;
+mysql> call proc1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  960.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 2080.00 |  300.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+13 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> delimiter $$
+mysql> create procedure proc1()
+    -> begin
+    -> declare result varchar(20);
+    -> set @num1:=56457;
+    -> set @num2:=98453;
+    -> if @a>@b then
+    -> set @result:='a is greater';
+    -> elseif @a<@b then
+    -> set @result:='b is greater';
+    -> else
+    -> set @result:='Both are same';
+    -> end if;
+    -> end;
+    -> $$
+ERROR 1304 (42000): PROCEDURE proc1 already exists
+mysql> delimiter $$
+mysql> create procedure proc2()
+    -> begin
+    -> declare result varchar(20);
+    -> set @num1:=56457;
+    -> set @num2:=98453;
+    -> if @a>@b then
+    -> set @result:='a is greater';
+    -> elseif @a<@b then
+    -> set @result:='b is greater';
+    -> else
+    -> set @result:='Both are same';
+    -> end if;
+    -> end;
+    -> $$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> 
+mysql> delimiter ;
+mysql> call procedure proc2;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'procedure proc2' at line 1
+mysql> delimiter ;
+mysql> call  proc2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter ;
+mysql> drop procedure proc1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> drop procedure proc2;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter $$
+mysql> create procedure proc2()
+    -> begin
+    -> declare result varchar(20);
+    -> set @num1:=56457;
+    -> set @num2:=98453;
+    -> if @a>@b then
+    -> set @result:='a is greater';
+    -> elseif @a<@b then
+    -> set @result:='b is greater';
+    -> else
+    -> set @result:='Both are same';
+    -> end if;
+    -> select @result;
+    -> end;
+    -> $$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> slect @result;
+    -> ^C
+mysql> ^C
+mysql> select @result;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter ;
+mysql> call  proc2;
++--------------+
+| @result      |
++--------------+
+| b is greater |
++--------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> exit
+mysql> delimiter $$
+mysql> create procedure whiledemo()
+    -> begin
+    -> set @num : =1;
+    -> while @num <=10
+    -> do
+    -> select @num;
+    -> set @num :=@num+1;
+    -> end while;
+    -> end;
+    -> $$
+ERROR 1046 (3D000): No database selected
+mysql> use cdac1;
+ERROR 1049 (42000): Unknown database 'cdac1;'
+mysql> use cdac1;
+ERROR 1049 (42000): Unknown database 'cdac1;'
+mysql> show database;
+    -> ^C
+mysql> ^C
+mysql> show databases;
+    -> Terminal close -- exit!
+mysql> elimiter $$
+    -> ^C
+mysql> ^C
+mysql> delimiter $$
+mysql> set autocommit=0;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit=0;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit=0;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit = 0;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> !/ cls
+    -> !\ cls
+ERROR: 
+Unknown command '\ '.
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> /! cls;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> \! cls;
+mysql> set autocommit=0;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit=0;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit:=0;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocomit=0;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit=0;
+    -> ^C
+mysql> ^C
+mysql> hjv vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    -> /! cls
+    -> \! cls
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> set autocommit;
+    -> ^C
+mysql> set autocommit =0;
+    -> set autocommit=0 ;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter;
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter ;
+mysql> set autocommit=0 ;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> deleminator;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'deleminator' at line 1
+mysql> deleminator //
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> 
+mysql> delimiter $$
+mysql> create procedure out_demo2(in pdeptno int, out psal numeric(10,2), out pmaxsal numeric(10,2), out pminsal numeric(10,2), out pavgsal numeric(10,2))
+    -> begin
+    -> select sal, max(sal), min(sal), avg(sal) into psal, pmaxsal, pminsal, pavgsal from emp
+    -> where deptno=pdeptno;
+    -> end;
+    -> $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter;
+    -> call out_demo2(10, @pmaxsal, @pminsal, @pavgsal)
+    -> select @pmaxsal, @pminsal, @pavgsal;
+    -> 
+    -> 
+    -> 
+    -> ^C
+mysql> ^C
+mysql> ^C
+mysql> ^C
+mysql> delimiter;
+    -> call out_demo2(10, @pmaxsal, @pminsal, @pavgsal);
+    -> select @pmaxsal, @pminsal, @pavgsal;
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> 
+    -> delimiter ;
+    -> call out_demo2(10, @pmaxsal, @pminsal, @pavgsal);
+    -> select @pmaxsal, @pminsal, @pavgsal;
+    -> 
+    -> 
+    -> 
+    -> ^C
+mysql> ^C
+mysql> delimiter ;
+mysql> call out_demo2(10, @pmaxsal, @pminsal, @pavgsal);
+ERROR 1318 (42000): Incorrect number of arguments for PROCEDURE cdac1.out_demo2; expected 5, got 4
+mysql> select @pmaxsal, @pminsal, @pavgsal;
++--------------------+--------------------+--------------------+
+| @pmaxsal           | @pminsal           | @pavgsal           |
++--------------------+--------------------+--------------------+
+|                |                |                |
++--------------------+--------------------+--------------------+
+1 row in set (0.00 sec)
+
+mysql> delimiter $$
+mysql> create procedure out_demo2(in pdeptno int, out pmaxsal numeric(10,2), out pminsal numeric(10,2), out pavgsal numeric(10,2))
+    -> begin
+    -> select max(sal), min(sal), avg(sal) into pmaxsal, pminsal, pavgsal from emp
+    -> where deptno=pdeptno;
+    -> end;
+    -> $$
+ERROR 1304 (42000): PROCEDURE out_demo2 already exists
+mysql> delimiter ;
+mysql> drop procedure out_demo2;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter $$
+mysql> create procedure out_demo2(in pdeptno int, out pmaxsal numeric(10,2), out pminsal numeric(10,2), out pavgsal numeric(10,2))
+    -> begin
+    -> select max(sal), min(sal), avg(sal) into pmaxsal, pminsal, pavgsal from emp
+    -> where deptno=pdeptno;
+    -> end;
+    -> $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> delimiter ;
+mysql> call out_demo2(10, @pmaxsal, @pminsal, @pavgsal);
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+mysql> select @pmaxsal, @pminsal, @pavgsal;
++----------+----------+----------+
+| @pmaxsal | @pminsal | @pavgsal |
++----------+----------+----------+
+|  5000.00 |  1300.00 |  2916.67 |
++----------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> call out_demo2(20, @pmaxsal, @pminsal, @pavgsal);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select @pmaxsal, @pminsal, @pavgsal;
++----------+----------+----------+
+| @pmaxsal | @pminsal | @pavgsal |
++----------+----------+----------+
+|  3000.00 |   800.00 |  2175.00 |
++----------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> call out_demo2(30, @pmaxsal, @pminsal, @pavgsal);
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+mysql> select @pmaxsal, @pminsal, @pavgsal;
++----------+----------+----------+
+| @pmaxsal | @pminsal | @pavgsal |
++----------+----------+----------+
+|  2850.00 |   950.00 |  1566.67 |
++----------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> call out_demo2(40, @pmaxsal, @pminsal, @pavgsal);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select @pmaxsal, @pminsal, @pavgsal;
++----------+----------+----------+
+| @pmaxsal | @pminsal | @pavgsal |
++----------+----------+----------+
+|     NULL |     NULL |     NULL |
++----------+----------+----------+
+1 row in set (0.00 sec)
+
+mysql> delimiter //
+mysql> create function fun(a int)
+    -> returns int 
+    -> determistic
+    -> return a*a*a;
+    -> //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'return a*a*a' at line 4
+mysql> delimiter //
+mysql> create function fun1(a int)
+    -> returns int 
+    -> determistic
+    -> return a*a*a;
+    -> //
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'return a*a*a' at line 4
+mysql> delimiter //
+mysql> create function fun1(a int)
+    -> returns int 
+    -> deterministic
+    -> return a*a*a;
+    -> //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> select fun1(5);
++---------+
+| fun1(5) |
++---------+
+|     125 |
++---------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> 
+mysql> delimiter ;
+mysql> select fun1(5,6);
+ERROR 1318 (42000): Incorrect number of arguments for FUNCTION cdac1.fun1; expected 1, got 2
+mysql> 
+mysql> delimiter //
+mysql> create function fun2(pempno int)
+    -> returns int 
+    -> deterministic
+    -> begin
+    -> declare annsal int;
+    -> select (sal + ifnull(comm,0))*12 into annsal from emp where empno = pempno;
+    -> return annsal;
+    -> end;
+    -> //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> delimiter ;
+mysql> select fun2(7369);
++------------+
+| fun2(7369) |
++------------+
+|       9600 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> 
+mysql> select fun2(7934);
++------------+
+| fun2(7934) |
++------------+
+|      15600 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select fun2(7876);
++------------+
+| fun2(7876) |
++------------+
+|      13200 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select fun2(7839);
++------------+
+| fun2(7839) |
++------------+
+|      60000 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select fun2(7900);
++------------+
+| fun2(7900) |
++------------+
+|      11400 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> drop function fun2;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> drop function fun1;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> drop function fun;
+ERROR 1305 (42000): FUNCTION cdac1.fun does not exist
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> exit

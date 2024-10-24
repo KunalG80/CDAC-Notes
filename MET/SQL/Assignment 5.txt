@@ -1,0 +1,153 @@
+Assignment 5
+
+1. store the salary of 'smith' in vsal and if the salary is
+Conditions		Display
+>=5000			Excellent
+<5000 >=4000		Good	
+<4000 >=3000		Average
+else			Bad
+
+delimiter //
+create procedure Asg_1()
+begin
+declare result varchar(30);
+select @vsal:=sal from emp where ename='smith';
+if @vsal >= 5000 then
+set @result:= 'Excellent Salary';
+elseif @vsal between 5000 and 4000 then
+set @result:= 'Good Salary';
+elseif @vsal between 4000 and 3000 then
+set @result:= 'Average Salary';
+else
+set @result:= 'Dumb Salary';
+end if;
+select @result;
+end;
+//
+
+delimiter ;
+call Asg_1();
+
+2. store the score in a variable score, do the following
+Conditions		Display
+>=75			Distinction
+<75 >=60		First Class
+<60 >=50		Second Class
+<50 >=35		Pass
+else			Better luck next time
+
+
+delimiter //
+create procedure Asg_2()
+begin
+declare result varchar(30);
+set @vscore:=1;
+if @vscore >= 75 then
+set @result:= 'distinction';
+elseif @vscore between 60 and 75 then
+set @result:= 'First Class';
+elseif @vscore between 60 and 50 then
+set @result:= 'Second Class';
+elseif @vscore between 50 and 35 then
+set @result:= 'pass';
+else
+set @result:= 'DUCK DUCK DUCK......';
+end if;
+select @result;
+end;
+//
+
+delimiter ;
+call Asg_2();
+
+
+
+3. 
+
+delimiter //
+create procedure Asg_3()
+begin
+declare result varchar(30);
+set @num = 4556;
+if @num > 0 then
+set @result:= '+ve';
+elseif @num < 0 then
+set @result:= '-ve';
+else
+set @result:= '0';
+end if;
+select @result;
+end;
+//
+
+delimiter ;
+call Asg_3();
+
+4. 
+
+delimiter //
+create procedure Asg_4(in vno varchar(20) , vsal numeric(10,2))
+begin
+select @vsal := sal from emp
+where @vno=deptno;
+if sal>@vsal 
+
+.
+end if;
+end;
+//
+
+delimiter ;
+call Asg_4();
+
+5. calculate the total for first 20 number using simple loop:1,2,....20
+
+6. display your name 10 times using repeat until loop
+
+7. display table of 5 using simple loop
+
+9. display first 10 odd number : 1,3.....21 using while loop
+
+10. display first 10 even number : 2,4.....20 using while loop
+
+delimiter $$
+create procedure out_demo2(in pdeptno int, out pmaxsal numeric(10,2), out pminsal numeric(10,2), out pavgsal numeric(10,2))
+begin
+select max(sal), min(sal), avg(sal) into pmaxsal, pminsal, pavgsal from emp
+where deptno=pdeptno;
+end;
+$$
+
+delimiter ;
+call out_demo2(10, @pmaxsal, @pminsal, @pavgsal);
+select @pmaxsal, @pminsal, @pavgsal;
+
+function 
+
+delimiter //
+create function fun1(a int)
+returns int 
+deterministic
+return a*a*a;
+//
+
+delimiter ;
+select fun1(5);
+
+delimiter //
+create function fun2(pempno int)
+returns int 
+deterministic
+begin
+declare annsal int;
+select (sal + ifnull(comm,0))*12 into annsal from emp where empno = pempno;
+return annsal;
+end;
+//
+
+delimiter ;
+select fun2(7369);
+select fun2(7934);
+select fun2(7876);
+
+

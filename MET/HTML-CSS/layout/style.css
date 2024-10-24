@@ -1,0 +1,33 @@
+header a{
+    color: darkslategrey !important;
+    cursor: pointer;
+}
+header a:hover{
+    color: #fe980f !important;
+}
+
+footer{
+    background-color: black !important;
+}
+
+footer h4{
+    color: #fe980f;
+}
+
+footer a{
+    color: grey !important;
+}
+
+footer a:hover{
+    color: beige !important;
+}
+
+@media only screen and (max-width:575px){
+    .logo-section,.banner{
+        text-align: center !important;
+    }
+    .top-menu{
+        justify-content: center !important;
+        padding-top: 8px !important;
+    }
+}

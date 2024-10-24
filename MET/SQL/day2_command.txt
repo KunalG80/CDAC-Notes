@@ -1,0 +1,541 @@
+mysql> select * from emp
+    -> where hiredate like '_____02___';
++-------+-------+----------+------+------------+---------+--------+--------+
+| empno | ename | job      | mgr  | hiredate   | sal     | comm   | deptno |
++-------+-------+----------+------+------------+---------+--------+--------+
+|  7499 | ALLEN | SALESMAN | 7698 | 1981-02-20 | 1600.00 | 300.00 |     30 |
+|  7521 | WARD  | SALESMAN | 7698 | 1981-02-22 | 1250.00 | 500.00 |     30 |
++-------+-------+----------+------+------------+---------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> 
+mysql> select * from dept;
++--------+------------+----------+
+| deptno | dname      | loc      |
++--------+------------+----------+
+|     10 | ACCOUNTING | NEW YORK |
+|     20 | RESEARCH   | DALLAS   |
+|     30 | SALES      | CHICAGO  |
+|     40 | OPERATIONS | BOSTON   |
++--------+------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select now()
+    -> select now();
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select now()' at line 2
+mysql> select now();
++---------------------+
+| now()               |
++---------------------+
+| 2024-08-31 16:12:12 |
++---------------------+
+1 row in set (0.01 sec)
+
+mysql> select curdate();
++------------+
+| curdate()  |
++------------+
+| 2024-08-31 |
++------------+
+1 row in set (0.01 sec)
+
+mysql> select currentdate();
+ERROR 1305 (42000): FUNCTION cdac1.currentdate does not exist
+mysql> select current_date();
++----------------+
+| current_date() |
++----------------+
+| 2024-08-31     |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> status;
+--------------
+
+Connection id:		8
+Current database:	cdac1
+Current user:		root@localhost
+SSL:			Cipher in use is TLS_AES_256_GCM_SHA384
+Using delimiter:	;
+Server version:		8.0.30 MySQL Community Server - GPL
+Protocol version:	10
+Connection:		localhost via TCP/IP
+Server characterset:	utf8mb4
+Db     characterset:	utf8mb4
+Client characterset:	cp850
+Conn.  characterset:	cp850
+TCP port:		3306
+Binary data as:		Hexadecimal
+Uptime:			1 hour 49 min 49 sec
+
+Threads: 2  Questions: 71  Slow queries: 0  Opens: 145  Flush tables: 3  Open tables: 64  Queries per second avg: 0.010
+--------------
+
+mysql> select ename as name, sal as salary from emp;
++--------+---------+
+| name   | salary  |
++--------+---------+
+| SMITH  |  800.00 |
+| ALLEN  | 1600.00 |
+| WARD   | 1250.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| SCOTT  | 3000.00 |
+| KING   | 5000.00 |
+| TURNER | 1500.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| FORD   | 3000.00 |
+| MILLER | 1300.00 |
++--------+---------+
+14 rows in set (0.00 sec)
+
+mysql> b
+    -> ^C
+mysql> select * from emp;
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |
+|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |
+|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |
+|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |
+|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |
+|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |
+|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |
+|  7788 | SCOTT  | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 |
+|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |
+|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |
+|  7876 | ADAMS  | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 |
+|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |
+|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |
+|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |
++-------+--------+-----------+------+------------+---------+---------+--------+
+14 rows in set (0.00 sec)
+
+mysql> select ename,sal salary from emp;
++--------+---------+
+| ename  | salary  |
++--------+---------+
+| SMITH  |  800.00 |
+| ALLEN  | 1600.00 |
+| WARD   | 1250.00 |
+| JONES  | 2975.00 |
+| MARTIN | 1250.00 |
+| BLAKE  | 2850.00 |
+| CLARK  | 2450.00 |
+| SCOTT  | 3000.00 |
+| KING   | 5000.00 |
+| TURNER | 1500.00 |
+| ADAMS  | 1100.00 |
+| JAMES  |  950.00 |
+| FORD   | 3000.00 |
+| MILLER | 1300.00 |
++--------+---------+
+14 rows in set (0.00 sec)
+
+mysql> select ename , sal as bonus from emp
+    -> where bonus= 0.2*bonus and bonus<=500;
+ERROR 1054 (42S22): Unknown column 'bonus' in 'where clause'
+mysql> select ename , sal*0.2 as bonus from emp
+    -> where bonus<=200;
+ERROR 1054 (42S22): Unknown column 'bonus' in 'where clause'
+mysql> select ename , sal*0.2<=500 as bonus from emp
+    -> 
+    -> ^C
+mysql> ^C
+mysql> select ename , sal*0.2<=500 as bonus from emp;
++--------+-------+
+| ename  | bonus |
++--------+-------+
+| SMITH  |     1 |
+| ALLEN  |     1 |
+| WARD   |     1 |
+| JONES  |     0 |
+| MARTIN |     1 |
+| BLAKE  |     0 |
+| CLARK  |     1 |
+| SCOTT  |     0 |
+| KING   |     0 |
+| TURNER |     1 |
+| ADAMS  |     1 |
+| JAMES  |     1 |
+| FORD   |     0 |
+| MILLER |     1 |
++--------+-------+
+14 rows in set (0.00 sec)
+
+mysql> select emane , sal*12 as annsal from emp;
+ERROR 1054 (42S22): Unknown column 'emane' in 'field list'
+mysql> select ename , sal*12 as annsal from emp;
++--------+----------+
+| ename  | annsal   |
++--------+----------+
+| SMITH  |  9600.00 |
+| ALLEN  | 19200.00 |
+| WARD   | 15000.00 |
+| JONES  | 35700.00 |
+| MARTIN | 15000.00 |
+| BLAKE  | 34200.00 |
+| CLARK  | 29400.00 |
+| SCOTT  | 36000.00 |
+| KING   | 60000.00 |
+| TURNER | 18000.00 |
+| ADAMS  | 13200.00 |
+| JAMES  | 11400.00 |
+| FORD   | 36000.00 |
+| MILLER | 15600.00 |
++--------+----------+
+14 rows in set (0.00 sec)
+
+mysql> select ename , sal*0.2 as bonus from emp
+    -> where bonus between 0 and 500;
+ERROR 1054 (42S22): Unknown column 'bonus' in 'where clause'
+mysql> select ename , sal*0.2 between 0 and 500 as bonus from emp;
++--------+-------+
+| ename  | bonus |
++--------+-------+
+| SMITH  |     1 |
+| ALLEN  |     1 |
+| WARD   |     1 |
+| JONES  |     0 |
+| MARTIN |     1 |
+| BLAKE  |     0 |
+| CLARK  |     1 |
+| SCOTT  |     0 |
+| KING   |     0 |
+| TURNER |     1 |
+| ADAMS  |     1 |
+| JAMES  |     1 |
+| FORD   |     0 |
+| MILLER |     1 |
++--------+-------+
+14 rows in set (0.00 sec)
+
+mysql> select ename, sal, comm, sal + ifnaull(comm,0) from emp;
+ERROR 1305 (42000): FUNCTION cdac1.ifnaull does not exist
+mysql> select ename, sal, comm, sal + ifnull(comm,0) from emp;
++--------+---------+---------+----------------------+
+| ename  | sal     | comm    | sal + ifnull(comm,0) |
++--------+---------+---------+----------------------+
+| SMITH  |  800.00 |    NULL |               800.00 |
+| ALLEN  | 1600.00 |  300.00 |              1900.00 |
+| WARD   | 1250.00 |  500.00 |              1750.00 |
+| JONES  | 2975.00 |    NULL |              2975.00 |
+| MARTIN | 1250.00 | 1400.00 |              2650.00 |
+| BLAKE  | 2850.00 |    NULL |              2850.00 |
+| CLARK  | 2450.00 |    NULL |              2450.00 |
+| SCOTT  | 3000.00 |    NULL |              3000.00 |
+| KING   | 5000.00 |    NULL |              5000.00 |
+| TURNER | 1500.00 |    0.00 |              1500.00 |
+| ADAMS  | 1100.00 |    NULL |              1100.00 |
+| JAMES  |  950.00 |    NULL |               950.00 |
+| FORD   | 3000.00 |    NULL |              3000.00 |
+| MILLER | 1300.00 |    NULL |              1300.00 |
++--------+---------+---------+----------------------+
+14 rows in set (0.01 sec)
+
+mysql> select ename, sal, comm, sal + ifnull(comm,2345) from emp;
++--------+---------+---------+-------------------------+
+| ename  | sal     | comm    | sal + ifnull(comm,2345) |
++--------+---------+---------+-------------------------+
+| SMITH  |  800.00 |    NULL |                 3145.00 |
+| ALLEN  | 1600.00 |  300.00 |                 1900.00 |
+| WARD   | 1250.00 |  500.00 |                 1750.00 |
+| JONES  | 2975.00 |    NULL |                 5320.00 |
+| MARTIN | 1250.00 | 1400.00 |                 2650.00 |
+| BLAKE  | 2850.00 |    NULL |                 5195.00 |
+| CLARK  | 2450.00 |    NULL |                 4795.00 |
+| SCOTT  | 3000.00 |    NULL |                 5345.00 |
+| KING   | 5000.00 |    NULL |                 7345.00 |
+| TURNER | 1500.00 |    0.00 |                 1500.00 |
+| ADAMS  | 1100.00 |    NULL |                 3445.00 |
+| JAMES  |  950.00 |    NULL |                 3295.00 |
+| FORD   | 3000.00 |    NULL |                 5345.00 |
+| MILLER | 1300.00 |    NULL |                 3645.00 |
++--------+---------+---------+-------------------------+
+14 rows in set (0.00 sec)
+
+mysql> select ename, sal, comm, sal + ifnull(comm,2345) as netsal from emp;
++--------+---------+---------+---------+
+| ename  | sal     | comm    | netsal  |
++--------+---------+---------+---------+
+| SMITH  |  800.00 |    NULL | 3145.00 |
+| ALLEN  | 1600.00 |  300.00 | 1900.00 |
+| WARD   | 1250.00 |  500.00 | 1750.00 |
+| JONES  | 2975.00 |    NULL | 5320.00 |
+| MARTIN | 1250.00 | 1400.00 | 2650.00 |
+| BLAKE  | 2850.00 |    NULL | 5195.00 |
+| CLARK  | 2450.00 |    NULL | 4795.00 |
+| SCOTT  | 3000.00 |    NULL | 5345.00 |
+| KING   | 5000.00 |    NULL | 7345.00 |
+| TURNER | 1500.00 |    0.00 | 1500.00 |
+| ADAMS  | 1100.00 |    NULL | 3445.00 |
+| JAMES  |  950.00 |    NULL | 3295.00 |
+| FORD   | 3000.00 |    NULL | 5345.00 |
+| MILLER | 1300.00 |    NULL | 3645.00 |
++--------+---------+---------+---------+
+14 rows in set (0.00 sec)
+
+mysql> select ename , sal*0.2 as bonus from emp
+    -> where bonus>500 as 500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'as 500' at line 2
+mysql> select ename , sal*0.2>=500 as bonus from emp
+    -> ^C
+mysql> select ename , sal*0.2>=500 as bonus from emp;
++--------+-------+
+| ename  | bonus |
++--------+-------+
+| SMITH  |     0 |
+| ALLEN  |     0 |
+| WARD   |     0 |
+| JONES  |     1 |
+| MARTIN |     0 |
+| BLAKE  |     1 |
+| CLARK  |     0 |
+| SCOTT  |     1 |
+| KING   |     1 |
+| TURNER |     0 |
+| ADAMS  |     0 |
+| JAMES  |     0 |
+| FORD   |     1 |
+| MILLER |     0 |
++--------+-------+
+14 rows in set (0.00 sec)
+
+mysql> select ename , sal*0.2 as bonus from emp;
++--------+----------+
+| ename  | bonus    |
++--------+----------+
+| SMITH  |  160.000 |
+| ALLEN  |  320.000 |
+| WARD   |  250.000 |
+| JONES  |  595.000 |
+| MARTIN |  250.000 |
+| BLAKE  |  570.000 |
+| CLARK  |  490.000 |
+| SCOTT  |  600.000 |
+| KING   | 1000.000 |
+| TURNER |  300.000 |
+| ADAMS  |  220.000 |
+| JAMES  |  190.000 |
+| FORD   |  600.000 |
+| MILLER |  260.000 |
++--------+----------+
+14 rows in set (0.00 sec)
+
+mysql> \. cls
+ERROR: 
+Failed to open file 'cls', error: 2
+mysql> \. cls
+ERROR: 
+Failed to open file 'cls', error: 2
+mysql> \. cls;
+ERROR: 
+Failed to open file 'cls;', error: 2
+mysql> /. cls;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/. cls' at line 1
+mysql> /% cls;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/% cls' at line 1
+mysql> /! cls;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '/! cls' at line 1
+mysql> /! cls
+    -> ^C
+mysql> select ename , sal*0.2 as bonus from emp;
++--------+----------+
+| ename  | bonus    |
++--------+----------+
+| SMITH  |  160.000 |
+| ALLEN  |  320.000 |
+| WARD   |  250.000 |
+| JONES  |  595.000 |
+| MARTIN |  250.000 |
+| BLAKE  |  570.000 |
+| CLARK  |  490.000 |
+| SCOTT  |  600.000 |
+| KING   | 1000.000 |
+| TURNER |  300.000 |
+| ADAMS  |  220.000 |
+| JAMES  |  190.000 |
+| FORD   |  600.000 |
+| MILLER |  260.000 |
++--------+----------+
+14 rows in set (0.00 sec)
+
+mysql> where  sal*0.2<500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where  sal*0.2<500' at line 1
+mysql> select ename , sal*0.2 as bonus from emp;
++--------+----------+
+| ename  | bonus    |
++--------+----------+
+| SMITH  |  160.000 |
+| ALLEN  |  320.000 |
+| WARD   |  250.000 |
+| JONES  |  595.000 |
+| MARTIN |  250.000 |
+| BLAKE  |  570.000 |
+| CLARK  |  490.000 |
+| SCOTT  |  600.000 |
+| KING   | 1000.000 |
+| TURNER |  300.000 |
+| ADAMS  |  220.000 |
+| JAMES  |  190.000 |
+| FORD   |  600.000 |
+| MILLER |  260.000 |
++--------+----------+
+14 rows in set (0.00 sec)
+
+mysql> where  sal*0.2<500;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where  sal*0.2<500' at line 1
+mysql> select ename , sal*0.2 as bonus from emp
+    -> where  sal*0.2<500;
++--------+---------+
+| ename  | bonus   |
++--------+---------+
+| SMITH  | 160.000 |
+| ALLEN  | 320.000 |
+| WARD   | 250.000 |
+| MARTIN | 250.000 |
+| CLARK  | 490.000 |
+| TURNER | 300.000 |
+| ADAMS  | 220.000 |
+| JAMES  | 190.000 |
+| MILLER | 260.000 |
++--------+---------+
+9 rows in set (0.00 sec)
+
+mysql> select ename from emp
+    -> where sal > 1000 && job = 'manager';
++-------+
+| ename |
++-------+
+| JONES |
+| BLAKE |
+| CLARK |
++-------+
+3 rows in set, 1 warning (0.00 sec)
+
+mysql> select ename from emp
+    -> where sal > 1000 || job = 'manager';
++--------+
+| ename  |
++--------+
+| ALLEN  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| TURNER |
+| ADAMS  |
+| FORD   |
+| MILLER |
++--------+
+12 rows in set, 1 warning (0.00 sec)
+
+mysql> slect ename as emp
+    -> where sal > 1000 or job = 'manager';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slect ename as emp
+where sal > 1000 or job = 'manager'' at line 1
+mysql> select ename from emp
+    -> where sal > 1000 or job = 'manager';
++--------+
+| ename  |
++--------+
+| ALLEN  |
+| WARD   |
+| JONES  |
+| MARTIN |
+| BLAKE  |
+| CLARK  |
+| SCOTT  |
+| KING   |
+| TURNER |
+| ADAMS  |
+| FORD   |
+| MILLER |
++--------+
+12 rows in set (0.00 sec)
+
+mysql> select sal from emp;
++---------+
+| sal     |
++---------+
+|  800.00 |
+| 1600.00 |
+| 1250.00 |
+| 2975.00 |
+| 1250.00 |
+| 2850.00 |
+| 2450.00 |
+| 3000.00 |
+| 5000.00 |
+| 1500.00 |
+| 1100.00 |
+|  950.00 |
+| 3000.00 |
+| 1300.00 |
++---------+
+14 rows in set (0.00 sec)
+
+mysql> select sum(sal) as sumsal, min(sal) minsal from emp;
++----------+--------+
+| sumsal   | minsal |
++----------+--------+
+| 29025.00 | 800.00 |
++----------+--------+
+1 row in set (0.04 sec)
+
+mysql> select count(*) from emp;
++----------+
+| count(*) |
++----------+
+|       14 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select count(*), sum(sal) sumsal, avg(sal) avgsal, min(sal) minsal, max(sal) maxsal from emp;
++----------+----------+-------------+--------+---------+
+| count(*) | sumsal   | avgsal      | minsal | maxsal  |
++----------+----------+-------------+--------+---------+
+|       14 | 29025.00 | 2073.214286 | 800.00 | 5000.00 |
++----------+----------+-------------+--------+---------+
+1 row in set (0.00 sec)
+
+mysql> select count(comm) from emp;
++-------------+
+| count(comm) |
++-------------+
+|           4 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> slect ename as emp
+    -> ^C
+mysql> exit
+mysql> Terminal close -- exit!

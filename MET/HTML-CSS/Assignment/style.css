@@ -1,0 +1,29 @@
+.q1{
+    border: solid ;
+    height: 100px ;
+    width: 100px ;
+}
+
+.q2{
+    border: dashed;
+}
+.q2:hover{
+    background-color: gray !important;
+}
+
+.q3{
+    background-color: aquamarine;
+}
+
+/* Para: covers the background color on 100% width.
+Bold: Cover the background color on content line. */
+
+.q4{
+    font-size: 40px;
+    background-color: blanchedalmond;
+    font-family: Arial;
+}
+
+.q5{
+    text-decoration: none;
+}
