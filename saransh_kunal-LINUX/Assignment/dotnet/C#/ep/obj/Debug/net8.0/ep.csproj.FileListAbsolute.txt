@@ -1,0 +1,14 @@
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/bin/Debug/net8.0/ep
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/bin/Debug/net8.0/ep.deps.json
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/bin/Debug/net8.0/ep.runtimeconfig.json
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/bin/Debug/net8.0/ep.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/bin/Debug/net8.0/ep.pdb
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/ep.GeneratedMSBuildEditorConfig.editorconfig
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/ep.AssemblyInfoInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/ep.AssemblyInfo.cs
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/ep.csproj.CoreCompileInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/ep.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/refint/ep.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/ep.pdb
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/ep.genruntimeconfig.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/ep/obj/Debug/net8.0/ref/ep.dll

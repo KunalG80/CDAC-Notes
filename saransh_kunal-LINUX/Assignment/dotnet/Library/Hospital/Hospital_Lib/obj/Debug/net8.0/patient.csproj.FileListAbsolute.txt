@@ -1,0 +1,11 @@
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/bin/Debug/net8.0/patient.deps.json
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/bin/Debug/net8.0/patient.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/bin/Debug/net8.0/patient.pdb
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/obj/Debug/net8.0/patient.GeneratedMSBuildEditorConfig.editorconfig
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/obj/Debug/net8.0/patient.AssemblyInfoInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/obj/Debug/net8.0/patient.AssemblyInfo.cs
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/obj/Debug/net8.0/patient.csproj.CoreCompileInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/obj/Debug/net8.0/patient.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/obj/Debug/net8.0/refint/patient.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/obj/Debug/net8.0/patient.pdb
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Hospital/Hospital_Lib/obj/Debug/net8.0/ref/patient.dll

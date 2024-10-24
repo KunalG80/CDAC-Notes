@@ -1,0 +1,4 @@
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/emp/obj/Debug/net8.0/emp.GeneratedMSBuildEditorConfig.editorconfig
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/emp/obj/Debug/net8.0/emp.AssemblyInfoInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/emp/obj/Debug/net8.0/emp.AssemblyInfo.cs
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/emp/obj/Debug/net8.0/emp.csproj.CoreCompileInputs.cache

@@ -1,0 +1,14 @@
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/bin/Debug/net8.0/DemoApp
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/bin/Debug/net8.0/DemoApp.deps.json
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/bin/Debug/net8.0/DemoApp.runtimeconfig.json
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/bin/Debug/net8.0/DemoApp.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/bin/Debug/net8.0/DemoApp.pdb
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/DemoApp.GeneratedMSBuildEditorConfig.editorconfig
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/DemoApp.AssemblyInfoInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/DemoApp.AssemblyInfo.cs
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/DemoApp.csproj.CoreCompileInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/DemoApp.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/refint/DemoApp.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/DemoApp.pdb
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/DemoApp.genruntimeconfig.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/banner_udf/obj/Debug/net8.0/ref/DemoApp.dll

@@ -1,0 +1,14 @@
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/interest.GeneratedMSBuildEditorConfig.editorconfig
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/interest.AssemblyInfoInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/interest.AssemblyInfo.cs
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/interest.csproj.CoreCompileInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/bin/Debug/net8.0/interest
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/bin/Debug/net8.0/interest.deps.json
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/bin/Debug/net8.0/interest.runtimeconfig.json
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/bin/Debug/net8.0/interest.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/bin/Debug/net8.0/interest.pdb
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/interest.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/refint/interest.dll
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/interest.pdb
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/interest.genruntimeconfig.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Interest/obj/Debug/net8.0/ref/interest.dll

@@ -1,0 +1,4 @@
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Loan/DemoApp1/obj/Debug/net8.0/DemoApp.GeneratedMSBuildEditorConfig.editorconfig
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Loan/DemoApp1/obj/Debug/net8.0/DemoApp.AssemblyInfoInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Loan/DemoApp1/obj/Debug/net8.0/DemoApp.AssemblyInfo.cs
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Loan/DemoApp1/obj/Debug/net8.0/DemoApp.csproj.CoreCompileInputs.cache

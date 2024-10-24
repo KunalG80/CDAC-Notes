@@ -1,0 +1,4 @@
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Loan/LoanLib/obj/Debug/net8.0/Loaning.GeneratedMSBuildEditorConfig.editorconfig
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Loan/LoanLib/obj/Debug/net8.0/Loaning.AssemblyInfoInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Loan/LoanLib/obj/Debug/net8.0/Loaning.AssemblyInfo.cs
+/home/cdac/met_cdac/saransh_kunal/Assignment/dotnet/Library/Loan/LoanLib/obj/Debug/net8.0/Loaning.csproj.CoreCompileInputs.cache
