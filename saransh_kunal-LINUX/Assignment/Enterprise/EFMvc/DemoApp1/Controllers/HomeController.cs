@@ -7,8 +7,8 @@ public class HomeController(SiteModel model) : Controller
 {
     public IActionResult Index()
     {
-        var visitors = model.GetCandidate();
-        return View(visitors); //renders ~/Views/{current-controller-name}/{current-method-name}.cshtml
+        var candidates = model.GetCandidate();
+        return View(candidates); //renders ~/Views/{current-controller-name}/{current-method-name}.cshtml
     }
 
     public IActionResult Register()
@@ -17,9 +17,9 @@ public class HomeController(SiteModel model) : Controller
     }
 
     [HttpPost]
-    public IActionResult Register(decimal candidateId)
+    public IActionResult Register(decimal empid , string empname , string empjob ,decimal empdeptid)
     {
-        model.AcceptVisit(candidateId);
+        model.AddEmployee(empid,empname,empjob,empdeptid);
         return RedirectToAction("Index");
     }
 }

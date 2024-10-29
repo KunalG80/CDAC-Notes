@@ -3,26 +3,23 @@
         <title>DemoApp</title>
     </head>
     <body>
-        <h1>Register Your Visit</h1>
+        <h1>Register Candidate Details</h1>
         <form method="post">
             <p>
+                <b>Your Id: </b>
+                <input type="text" name="empid"/>
                 <b>Your Name: </b>
-                <input type="text" name="visitorId"/>
-            </p>
-            <p>
-                <b>Experience: </b>
-                <select name="visitorRating">
-                    <option value="5">Fantastic</option>
-                    <option value="4">Fine</option>
-                    <option value="3">Average</option>
-                    <option value="2">Poor</option>
-                    <option value="1">Pathetic</option>
-                </select>
+                <input type="text" name="empname"/>
+                 <b>Your job: </b>
+                <input type="text" name="empjob"/>
+                <b>Deparment ID </b>
+                <input type="text" name="empdeptid"/>
+               
             </p>
             <p>
                 <input type="submit" value="Submit"/>
             </p>
         </form>
-        <a href="/Home/Index">Our Visitors</a>
+        <a href="/Home/Index">All Employees</a>
     </body>
 </html>

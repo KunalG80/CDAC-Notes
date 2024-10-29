@@ -1,4 +1,4 @@
-@model IEnumerable<Tourism.Models.Candidate>
+@model IEnumerable<Tourism.Models.Candidate2>
 <html>
     <head>
         <title>DemoApp</title>
@@ -8,21 +8,23 @@
         <table border="1">
             <tr>
                 <th>Candidate ID</th>
-                <th>Candidate Dname</th>
-                <th>Candidate Locations</th>
+                <th>Candidate Name</th>
+                <th>Candidate Job</th>
+                <th>Candidate Department</th>
             </tr>
             @foreach(var candidate in Model)
             {
                 <tr>
-                    <td>@candidate.deptId</td>
-                    <td>@candidate.dname</td>
-                    <td>@candidate.loc</td>
+                    <td>@candidate.Id</td>
+                    <td>@candidate.Name</td>
+                    <td>@candidate.Job</td>
+                    <td>@candidate.Department</td>
                     @* <td>@candidate.Stars</td> *@
                 </tr>
             }
         </table>
         <p>
-            <a href="/Home/Register">Register Your Visit</a>
+            <a href="/Home/Register">Register Candidate</a>
         </p>
     </body>
 </html>

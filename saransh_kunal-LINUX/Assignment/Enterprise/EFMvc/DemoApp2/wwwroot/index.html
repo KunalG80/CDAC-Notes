@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>DemoApp</title>
+        <script defer src="alpine.js"></script>
+    </head>
+    <body x-data="siteDataSource()" >
+        <h1>Welcome Visitor</h1>
+        <hr/>
+        <h2>Our Visitors</h2>
+        <table x-init="readEmployee()" border="1">
+            <tr>
+                <th>Candidate ID</th>
+                <th>Candidate Name</th>
+                <th>Candidate Job</th>
+                <th>DepartmentId</th>
+            </tr>
+            <template x-for="candidate in candidates">
+                <tr>
+                    <td x-text="candidate.id"></td>
+                    <td x-text="candidate.name"></td>
+                    <td x-text="candidate.job"></td>
+                    <td x-text="candidate.department"></td>
+                </tr>
+            </template>
+        </table>
+        <br/>
+        <hr/>
+        <h2>Register Your Visit</h2>
+        <p>
+            <b>Your Id:</b>
+            <input type="text" x-model="Employee.id"/>
+        </p>
+        <p>
+            <b>Your Name:</b>
+            <input type="text" x-model="Employee.Name"/>
+            <b>Your Job:</b>
+            <input type="text" x-model="Employee.Job"/>
+            <b>Your Department:</b>
+            <input type="text" x-model="Employee.department"/>
+        </p>
+        <p>
+            <button x-on:click="writeCandidate()">Submit</button>
+        </p>
+        <hr/>
+        <script>
+            function siteDataSource() {
+                const backendUri = "/api/site";
+                return {
+                    candidates: [],
+                    Employee: {id: "", name: 0, job: 0, DepartmentId:""},
+                    async readEmployee() {
+                        let response = await fetch(backendUri);
+                        this.candidates = await response.json();
+                    },
+                    async writeCandidate() {
+                        let request = {
+                            method: "post",
+                            headers: {"Content-Type": "application/json"},
+                            body: JSON.stringify(this.candidates)
+                        };
+                        let response = await fetch(backendUri, request);
+                        if(response.ok)
+                            await this.readEmployee();
+                    }
+                };
+            }
+        </script>
+    </body>
+</html>
