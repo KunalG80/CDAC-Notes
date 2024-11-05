@@ -25,7 +25,7 @@ public class HomeController() : ControllerBase
 
 
 
-    [HttpPost("/api/site")]
+    [HttpPost("/api/site/")]
     public IActionResult WriteCandidate(Employee input,SiteModel model)
     {
         model.AddEmployee(input.Id,input.name,input.job,input.DepartmentId);

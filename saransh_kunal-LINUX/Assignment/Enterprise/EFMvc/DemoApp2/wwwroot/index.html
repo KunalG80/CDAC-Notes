@@ -3,11 +3,11 @@
         <title>DemoApp</title>
         <script defer src="alpine.js"></script>
     </head>
-    <body x-data="siteDataSource()" >
+    <body x-data="siteDataSource()" x-init="readEmployee()">
         <h1>Welcome Visitor</h1>
         <hr/>
         <h2>Our Visitors</h2>
-        <table x-init="readEmployee()" border="1">
+        <table border="1">
             <tr>
                 <th>Candidate ID</th>
                 <th>Candidate Name</th>
@@ -28,15 +28,15 @@
         <h2>Register Your Visit</h2>
         <p>
             <b>Your Id:</b>
-            <input type="text" x-model="Employee.id"/>
+            <input type="text"  x-model="Employee.Id"/>
         </p>
         <p>
             <b>Your Name:</b>
-            <input type="text" x-model="Employee.Name"/>
+            <input type="text" x-model="Employee.name"/>
             <b>Your Job:</b>
-            <input type="text" x-model="Employee.Job"/>
+            <input type="text" x-model="Employee.job"/>
             <b>Your Department:</b>
-            <input type="text" x-model="Employee.department"/>
+            <input type="text" x-model="Employee.DepartmentId"/>
         </p>
         <p>
             <button x-on:click="writeCandidate()">Submit</button>
@@ -47,7 +47,7 @@
                 const backendUri = "/api/site";
                 return {
                     candidates: [],
-                    Employee: {id: "", name: 0, job: 0, DepartmentId:""},
+                    Employee: {Id: "", name: "", job: "", DepartmentId:0},
                     async readEmployee() {
                         let response = await fetch(backendUri);
                         this.candidates = await response.json();
@@ -56,7 +56,7 @@
                         let request = {
                             method: "post",
                             headers: {"Content-Type": "application/json"},
-                            body: JSON.stringify(this.candidates)
+                            body: JSON.stringify(this.Employee)
                         };
                         let response = await fetch(backendUri, request);
                         if(response.ok)

@@ -43,7 +43,7 @@ public class SiteModel
         }
         // dept.det.Add(new Employee());
         dept.name = name;
-        dept.DepartmentId=deptid;
+        dept.DepartmentId = deptid;
         dept.job = job;
         site.SaveChanges();
     }
