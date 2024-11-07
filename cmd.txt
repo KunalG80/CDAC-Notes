@@ -1,0 +1,13 @@
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+dotnet new console -n DemoApp -o DemoApp2
+
+dotnet new web -n DemoApp -o DemoApp2
+
+ssh cdac@iitdac.met.edu
+metiit@123
+
+sqlcmd -U dac4 -P dac4@1234
+
+use shop4
+go

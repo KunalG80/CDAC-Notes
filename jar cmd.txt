@@ -1,0 +1,8 @@
+javac -d bin banking/*.java
+   19  cd b
+   20  cd bin/
+   21  ls
+   22  ls banking/
+   23  jar -c -f bank.jar banking/
+   24  ls
+   25  jar -t -f bank.jar 
