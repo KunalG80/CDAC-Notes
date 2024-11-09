@@ -1,5 +1,4 @@
 //Factory class
-
 package loan;
 
 public class Loaner {

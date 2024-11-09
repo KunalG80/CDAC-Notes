@@ -1,5 +1,4 @@
 package loan;
-// import java.util.List;
 
 public abstract class Loan{
     public double principle;
