@@ -1,0 +1,53 @@
+{
+  "Files": [
+    {
+      "Id": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/wwwroot/alpine.js",
+      "PackagePath": "staticwebassets/alpine.js"
+    },
+    {
+      "Id": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/wwwroot/alpine.js:Zone.Identifier",
+      "PackagePath": "staticwebassets/alpine.js:Zone.Identifier"
+    },
+    {
+      "Id": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/wwwroot/index.css",
+      "PackagePath": "staticwebassets/index.css"
+    },
+    {
+      "Id": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/wwwroot/index.css:Zone.Identifier",
+      "PackagePath": "staticwebassets/index.css:Zone.Identifier"
+    },
+    {
+      "Id": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/wwwroot/index.html",
+      "PackagePath": "staticwebassets/index.html"
+    },
+    {
+      "Id": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/wwwroot/index.html:Zone.Identifier",
+      "PackagePath": "staticwebassets/index.html:Zone.Identifier"
+    },
+    {
+      "Id": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/wwwroot/index.js",
+      "PackagePath": "staticwebassets/index.js"
+    },
+    {
+      "Id": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/wwwroot/index.js:Zone.Identifier",
+      "PackagePath": "staticwebassets/index.js:Zone.Identifier"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.DemoApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.DemoApp.props",
+      "PackagePath": "build\\DemoApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.DemoApp.props",
+      "PackagePath": "buildMultiTargeting\\DemoApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.DemoApp.props",
+      "PackagePath": "buildTransitive\\DemoApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

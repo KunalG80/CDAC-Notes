@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "zgDZK5/ihCDWd81bzZAMep5QiGbN+FFpjjQ4Xc7P2X/d1GgrT7YCm7DE6PqYV6gmUgrE5W0RvD4M5s8lX6V1sQ==",
+  "success": true,
+  "projectFilePath": "/home/cdac/met_cdac/saransh_kunal/Codes/DotNet/Enterprise/Microservices/RESTTest/DemoApp/DemoApp.csproj",
+  "expectedPackageFiles": [
+    "/home/cdac/.nuget/packages/google.protobuf/3.28.3/google.protobuf.3.28.3.nupkg.sha512",
+    "/home/cdac/.nuget/packages/grpc/2.46.6/grpc.2.46.6.nupkg.sha512",
+    "/home/cdac/.nuget/packages/grpc.core/2.46.6/grpc.core.2.46.6.nupkg.sha512",
+    "/home/cdac/.nuget/packages/grpc.core.api/2.66.0/grpc.core.api.2.66.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/grpc.net.client/2.66.0/grpc.net.client.2.66.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/grpc.net.clientfactory/2.66.0/grpc.net.clientfactory.2.66.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/grpc.net.common/2.66.0/grpc.net.common.2.66.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/microsoft.extensions.dependencyinjection/6.0.0/microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/microsoft.extensions.http/6.0.0/microsoft.extensions.http.6.0.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/microsoft.extensions.logging/6.0.0/microsoft.extensions.logging.6.0.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.0/microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0/system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "/home/cdac/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
+    "/home/cdac/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
