@@ -1,0 +1,6 @@
+app/company/models/SiteModel.class
+app/company/data/EmployeeEntity.class
+app/components/SiteManagerServlet.class
+app/components/SiteManagerServlet$VisitorInput.class
+app/company/models/Candidate.class
+app/company/data/DepartmentEntity.class

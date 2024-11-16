@@ -1,0 +1,6 @@
+app/components/CompanyServlet.class
+app/company/models/Candidate.class
+app/company/data/EmployeeEntity.class
+app/components/CompanyServlet$CandidateInput.class
+app/company/data/DepartmentEntity.class
+app/company/models/companymodel.class
