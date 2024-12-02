@@ -26,7 +26,8 @@ public class Stack_Class
     {
         int temp=stack[tos];
         tos--;
-        return(temp);
+        return(temp)
+        ;
     }
     int peek()
     {
