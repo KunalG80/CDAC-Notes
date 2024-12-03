@@ -1,0 +1,12 @@
+<script>
+
+    function outer(a,b,f1,f2){
+        console.log(a,b);
+        console.log(typeof f1);
+        console.log(typeof f2);
+        f1();
+        f2();
+    }
+
+    outer(100,200,()=>{console.log('called');},function(){console.log(900);});
+</script>

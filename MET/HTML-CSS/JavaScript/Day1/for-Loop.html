@@ -1,0 +1,24 @@
+<script>
+    'use strict';
+
+    var amount = 150000;
+    var interestRate = 7.15;
+    var openingBalance=0;
+
+    for(let year=1;year<=15;year++){
+        let interest = (openingBalance+amount)*interestRate/100;
+        interest = Math.round(interest);
+        
+        let closingBalance = openingBalance + amount +interest;
+
+        console.log(year);
+        console.log(openingBalance);
+        console.log(amount);
+        console.log(interest);
+        console.log(closingBalance);
+
+        openingBalance = closingBalance;
+    }
+
+    //console.log(year);
+</script>

@@ -24,7 +24,7 @@ padding cannot be negative.
 
 we can give negative px values in margin but not in padding.
 
-their are 3 types of css for applying on  html file 
+their are 3 types of css for applying on  html file
 1) inline css
 2) internal css
 3) external css
@@ -57,7 +57,7 @@ Q) what is bootStrap
 3) its a collection of JS based plugin(component)
 
 UI Design
-html, css, bootstrap, tailwind, wordpress, drupal, shopify, figma, aws, DSA 
+html, css, bootstrap, tailwind, wordpress, drupal, shopify, figma, aws, DSA
 
 Frontend Development
 javascript, react, react native, angular, iconic, vue js. DSA
@@ -72,7 +72,7 @@ upload project on github & AWS
 
 Grid
 we purpose 12 as a grid because it's divisible by multiple number.
-12 --> 100% , 1/12 --> 8.3333, 
+12 --> 100% , 1/12 --> 8.3333,
 
 Container
 align structure in the center.
@@ -117,6 +117,34 @@ var, let
 if you haven't given any value to variable, then it gives output as undefined.
 
 CSS3 Properties:
-transform : 
+transform :
 animation : (animation_name time)
 border-radius:
+
+
+javascript
+
+Day 1
+
+always use LET in block scope.
+
+always use STRICT in JavaScript.
+
+Template Literal ( ` )
+used for multiline string and interpolated string.
+
+{}
+for scope and object
+
+Function:
+named function (function with name)
+&
+anonymous (function without name)
+function will be stored in variable.
+&
+arrow (=>)
+one liner functionality
+&
+callback
+passed as argument to another function
+i. 

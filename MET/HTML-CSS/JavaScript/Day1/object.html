@@ -1,0 +1,31 @@
+<script>
+    'use script';
+
+    var product = {
+        name:'shirt',
+        price:1000,
+        discount:10,
+        path:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRviyOWphs0xvM3RYCHgRm0TbyJNBsF5nieow&s',
+        size:['XL','XXL']
+    }
+    console.log(product);
+
+    document.write(`
+        <div>
+            <img src="${product.path}"/>
+            <h2>${product.price}</h2>
+            <p>${product.name}</p>
+            <button>Add to Cart</button>
+        </div>
+    `);
+</script>
+
+<style>
+    div{
+        border: sandybrown;
+        width:300px;
+        height:300px;
+        text-align: center;
+        margin: auto;
+    }
+</style>
