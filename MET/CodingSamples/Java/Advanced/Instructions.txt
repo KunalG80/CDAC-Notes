@@ -1,0 +1,14 @@
+In Contract
+1) Mvn install   // Install contract dependencies
+2) Run the Server program
+3) Go to Demo Client which is written in python
+   a) First install python3
+      sudo apt install python3
+   b) Install pip
+      sudo apt install python3-pip
+   c) pip install grpcio grpcio.tools
+      python3 -m grpc_tools.protoc --python_out=. --grpc_python_out=. order_manager.proto -I . 
+   d) Run Python client
+      python3 Program.py CU101
+
+=================================================================================================

@@ -1,0 +1,28 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<h1>API CALL USING $.get</h1>
+<input type="text" id="txt">
+<button id="btn">GET DATA</button>
+<div></div>
+
+<script>
+    const API = 'https://fakestoreapi.com/products/';
+    $("#btn").click(function(){
+        var id = $("#txt").val();
+        console.log(id);
+
+        var apipath = API + id
+        console.log(apipath);
+
+        $.get(apipath , function(res){
+            console.log(res);
+            $('div').html(
+                `
+                <img src ="${res.image}"/>
+                <h2>${res.price}</h2>
+                <p>${res.title}</p>
+                `
+            );
+        });
+    });
+</script>

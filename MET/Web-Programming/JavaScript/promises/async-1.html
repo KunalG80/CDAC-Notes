@@ -1,0 +1,17 @@
+<script>
+function myfunction(){
+    return [20, 30 ,50];
+}
+var result = myfunction()
+console.log(result);
+//---------------------//
+async function myfunction1(){
+    return [20, 30 ,50];
+}
+var result = myfunction1();
+console.log(result);
+
+result.then(val=>{
+    console.log(val);
+})
+</script>

@@ -1,0 +1,5 @@
+app/components/SingerServlet.class
+app/song/models/Contestant.class
+app/song/data/SingerEntity.class
+app/components/SingerServlet$input.class
+app/song/models/SiteModel.class

@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>DemoApp</title>
+        <script defer src="alpine.js"></script>
+    </head>
+    <body x-data="siteDataSource()" x-init="readSinger()">
+        <h1>Welcome Contestant</h1>
+        <hr/>
+        <h2>Our Contestant</h2>
+        <table border="1">
+            <tr>
+                <th>Contestant ID</th>
+                <th>Contestant Name</th>
+                <th>Contestant Age</th>
+                <th>contestant Salary</th>
+            </tr>
+            <template x-for="Contestant in Contestants">
+                <tr>
+                    <td x-text="Contestant.id"></td>
+                    <td x-text="Contestant.name"></td>
+                    <td x-text="Contestant.age"></td>
+                    <td x-text="Contestant.salary"></td>
+                </tr>
+            </template>
+        </table>
+        <br/>
+        <hr/>
+        <h2>Register Yourself</h2>
+        <p>
+            <b>Your Id:</b>
+            <input type="text"  x-model="singer.id"/>
+        </p>
+        <p>
+            <b>Your Name:</b>
+            <input type="text" x-model="singer.name"/>
+            <b>Your Age:</b>
+            <input type="text" x-model="singer.age"/>
+            <b>Your Salary:</b>
+            <input type="text" x-model="singer.salary"/>
+        </p>
+        <p>
+            <button x-on:click="writeCandidate()">Submit</button>
+        </p>
+        <hr/>
+        <script>
+            function siteDataSource() {
+                const backendUri = "/api/site";
+                return {
+                    Contestants: [],
+                    singer: {id: 0, name: "", age: 0, salary:0},
+                    async readSinger() {
+                        let response = await fetch(backendUri);
+                        this.compitition = await response.json();
+                    },
+                    async writeCandidate() {
+                        let request = {
+                            method: "post",
+                            headers: {"Content-Type": "application/json"},
+                            body: JSON.stringify(this.singer)
+                        };
+                        let response = await fetch(backendUri, request);
+                        if(response.ok)
+                            await this.readSinger();
+                    }
+                };
+            }
+        </script>
+    </body>
+</html>

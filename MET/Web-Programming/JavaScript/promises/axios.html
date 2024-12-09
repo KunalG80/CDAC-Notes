@@ -1,0 +1,20 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<button>GET DATA</button>
+
+<script>
+    document.querySelector('button').onclick =()=>{
+        // console.log(axios)
+
+        var res = axios.get( 'https://fakestoreapi.com/products');
+        console.log(res);
+
+        res.then(val=>{
+            console.log(val.data)
+        })
+        .catch(err=>{
+            console.log(err.message)
+        })
+        
+    }
+</script>

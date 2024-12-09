@@ -12,7 +12,7 @@ public class Program {
         String customerId = args[0].toUpperCase();
         int productNo = Integer.parseInt(args[1]);
         int quantity = Integer.parseInt(args[2]);
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//iitdac.met.edu/xe", "scott", "tiger");
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//iitdac.met.edu/xe", "dac4", "dac4");
         CallableStatement cstmt = con.prepareCall("{call place_order(?, ?, ?, ?)}");
         cstmt.setString(1, customerId);
         cstmt.setInt(2, productNo);

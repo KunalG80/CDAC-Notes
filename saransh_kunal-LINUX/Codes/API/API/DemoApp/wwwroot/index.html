@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DemoApp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <script defer src="https://unpkg.com/alpinejs"></script>
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script> -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e6e6fa;
+            color: #4b0082;
+        }
+        h1, h2 {
+            color: #800080;
+            text-align: center;
+            margin-top: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .table {
+            margin-top: 20px;
+            border: 1px solid #dda0dd;
+            background-color: #f0e6ff;
+        }
+        .table thead th {
+            background-color: #ba55d3;
+            color: #ffffff;
+        }
+        .btn-primary {
+            background-color: #8a2be2;
+            border-color: #8a2be2;
+        }
+        .btn-primary:hover {
+            background-color: #6a1cb6;
+            border-color: #6a1cb6;
+        }
+        input[type="text"], select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #dda0dd;
+            border-radius: 5px;
+            background-color: #f0e6ff;
+            color: #4b0082;
+            width: 100%;
+        }
+        form p {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        button {
+            align-self: center;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div x-data="dataSource()">
+        <h1>Welcome Employee!</h1>
+        <hr />
+        <!-- To Show Employee Table -->
+        <div x-init="readCandidates()">
+            <h2>Our Employees</h2>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Employee Id</th>
+                        <th>Employee Name</th>
+                        <th>Job</th>
+                        <th>Salary</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template x-for="candidate in candidates">
+                        <tr>
+                            <td x-text="candidate.id"></td>
+                            <td x-text="candidate.empName"></td>
+                            <td x-text="candidate.jobs"></td>
+                            <td x-text="candidate.sal"></td>
+                            <td x-text="candidate.deptId"></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+        <hr />
+
+
+        <!-- To Add Employee -->
+        <h2>Register Yourself</h2>
+        <div x-init="readDepartments()">
+            <form>
+                <p>
+                    <b>Employee ID : </b>
+                    <input type="text" x-model="Employee.id">
+
+                    <b>Employee Name : </b>
+                    <input type="text" x-model="Employee.name">
+                </p>
+                <p>
+                    <b>Jobs Available :</b>
+                    <select x-model="Employee.job">
+                        <option selected disabled>Choose .......</option>
+                        <option value="MANAGER">MANAGER</option>
+                        <option value="ANALYST">ANALYST</option>
+                        <option value="SALESMAN">SALESMAN</option>
+                        <option value="CLERK">CLERK</option>
+                        <option value="DEVELOPER">DEVELOPER</option>
+                        <option value="HR">HR</option>
+                    </select>
+
+                    <b>Salary based on Job :</b>
+                    <select x-model="Employee.salary">
+                        <option selected disabled>Chooose .......</option>
+                        <option value="3500">MANAGER</option>
+                        <option value="4000">ANALYST</option>
+                        <option value="1700">SALESMAN</option>
+                        <option value="1400">CLERK</option>
+                        <option value="4500">DEVELOPER</option>
+                        <option value="5000">HR</option>
+                    </select>
+
+                    <b>Department :</b>
+                    <select x-model="Employee.departmentId">
+                        <option selected disabled>Choose Department</option>
+                        <template x-for="depart in departments" :key="depart.id">
+                            <option :value="depart.id" x-text="depart.deptName"></option>
+                        </template>
+                    </select>
+                </p>
+
+                <p>
+                    <button class="btn btn-primary" x-on:click="writeCandidate()">Submit form</button>
+                </p>
+            </form>
+        </div>
+        <hr />
+        <!-- To Show Department Table -->
+        <div x-init="readDepartments()">
+            <h2>Departments</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Department Id</th>
+                        <th>Department Name</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template x-for="depart in departments">
+                        <tr>
+                            <td x-text="depart.id"></td>
+                            <td x-text="depart.deptName"></td>
+                            <td x-text="depart.loc"></td>
+                        </tr>
+                    </template>
+                </tbody>
+                
+            </table>
+        </div>
+        <br>
+        <hr />
+        <!-- To Add Department -->
+        <div>
+            <h2>Add New Department</h2>
+            <form>
+                <p>
+                    <b>Department Id :</b>
+                    <input type="text" x-model="Department.id">
+                </p>
+
+                <p>
+                    <b>Department Name :</b>
+                    <input type="text" x-model="Department.deptname">
+                </p>
+
+                <p>
+                    <b> Department Location :</b>
+                    <select x-model="Department.location">
+                        <option selected disabled>Chooose ...</option>
+                        <option value="NEW YORK">NYC</option>
+                        <option value="DALLAS">DALLAS</option>
+                        <option value="CHICAGO">CHICAGO</option>
+                        <option value="BOSTON">BOSTON</option>
+                        <option value="BERLIN">BERLIN</option>
+                        <option value="MONACO">MONACO</option>
+                        <option value="TOKYO">TOKYO</option>
+                    </select>
+                </p>
+
+                <p>
+                    <button class="btn btn-primary" x-on:click="writeDepartment()">Submit</button>
+                </p>
+            </form>
+
+        </div>
+
+
+        <hr />
+    </div>
+    <script>
+        function dataSource() {
+            const backendUri = "/api/home";
+            return {
+                candidates: [],
+                departments: [],
+                Employee: { id: "", name: "", job: "", salary: "", departmentId: "" },
+                Department: { id: "", deptname: "", location: "" },
+                async readCandidates() {
+                    let response = await fetch(backendUri);
+                    this.candidates = await response.json();
+                },
+
+                async readDepartments() {
+                    let response = await fetch(`${backendUri}/dept`);
+                    this.departments = await response.json();
+                },
+
+                async writeCandidate() {
+                    let request = {
+                        method: "post",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(this.Employee)
+                    }
+
+                    let response = await fetch(`${backendUri}/emp/add`, request)
+                    if (response.ok)
+                        await this.readCandidates();
+                },
+
+                async writeDepartment() {
+                    let request = {
+                        method: "post",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(this.Department)
+                    }
+
+                    let response = await fetch(`${backendUri}/dept/add`, request)
+                    if (response.ok)
+                        await this.readDepartments();
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

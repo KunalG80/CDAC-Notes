@@ -1,0 +1,23 @@
+<script>
+
+        var rec = new Promise((res,rej)=>{
+            console.log(typeof res);
+            console.log(typeof rej);
+            //async operation
+            setTimeout(()=>{
+                // res({msg:'api called',data:[10,20,30]})
+                res({msg:'api failed',data:null})
+            },3000)
+
+        });
+
+        console.log(rec);
+
+        rec.then(val=>{
+            console.log(val);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+
+</script>

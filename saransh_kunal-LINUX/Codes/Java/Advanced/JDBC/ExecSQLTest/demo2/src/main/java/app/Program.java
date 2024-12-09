@@ -15,7 +15,7 @@ public class Program {
         int productNo = Integer.parseInt(args[1]);
         int quantity = Integer.parseInt(args[2]);
         Date orderDate = new Date(System.currentTimeMillis());
-        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//iitdac.met.edu/xe", "scott", "tiger");
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@//iitdac.met.edu/xe", "dac4", "dac4");
         con.setAutoCommit(false);
         try{
             Statement stmt = con.createStatement();

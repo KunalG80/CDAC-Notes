@@ -1,0 +1,14 @@
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/bin/Debug/net8.0/demoApp
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/bin/Debug/net8.0/demoApp.deps.json
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/bin/Debug/net8.0/demoApp.runtimeconfig.json
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/bin/Debug/net8.0/demoApp.dll
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/bin/Debug/net8.0/demoApp.pdb
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/demoApp.GeneratedMSBuildEditorConfig.editorconfig
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/demoApp.AssemblyInfoInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/demoApp.AssemblyInfo.cs
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/demoApp.csproj.CoreCompileInputs.cache
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/demoApp.dll
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/refint/demoApp.dll
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/demoApp.pdb
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/demoApp.genruntimeconfig.cache
+/home/cdac/met_cdac/saransh_kunal/Exam/demoApp1/obj/Debug/net8.0/ref/demoApp.dll
