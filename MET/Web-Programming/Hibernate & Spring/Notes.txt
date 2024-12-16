@@ -1,0 +1,832 @@
+Java Technologies:
+	In the context of Java programming model, technologies are divided into
+	2 categories:
+		1. Specification
+		2. Framework
+		
+	Specification:
+		It is a set of rules. It comes up with some guidelines and the actual
+		implementation is provided by servers e.g. web servers and application
+		servers.
+		
+		E.g.
+			Tomcat web server provides implementation of Servlet and JSP.
+			
+	Framework:	
+		It is a partial solution used to address common problems.
+		It provides its own library and a workflow.
+		
+		There are several Java based frameworks	available and every framework
+		has its own significance.
+			
+		E.g.
+			JUnit - It used for unit testing.
+		
+		Like JUnit, there are other frameworks available but the most popular
+		frameworks are:
+			Hibernate
+			Spring
+		
+		Hibernate:
+			Hibernate is an open source Java based framework meant for building
+			Persistence Layer of the application.
+			
+			JDBC Limitations:
+				1. A lot of boiler-plate code
+					Developer has to write a lot of code e.g. loading the driver, 
+					establishing connection, obtaining statement and so on.
+				2. Must make use of SQL
+				3. Extra efforts for performance optimization
+					Developer has to write a separate code for performance '
+					optimization.
+			
+			Hibernate Benefits:
+				1. No boiler-plate code involved
+					The code for loading driver, establishing connection and so on
+					is handled internally.
+				2. CRUD operations without SQL
+					Developer can handle CRUD operations without writing SQL
+					queries.
+				3. Hibernate provides performance optimization techniques like 
+					fetching, caching etc.
+		
+		Hibernate and JDBC:
+			Hibernate is an abstraction on the top of JDBC.
+			It is an implementation of ORM.
+			
+		ORM:
+			ORM stands for Object to Relational Mapping
+			It is a set of principles that maps domain objects to relational
+			database tables based upon some metadata.
+			
+			ORM Principles:
+				1. Automated Persistence:
+					The persistence related operations are simplified with the 
+					help of mapping.
+					Developer need not to write the lengthy code for handling
+					persistency.
+						
+				2. Full support for object modeling:
+					Object modeling techniques like Inheritance, Containment are
+					supported via different types of mapping strategies.
+					
+				3. Full support for performance optimization:
+					Performance optimization techniques like fetching, caching are
+					supported
+					
+				4. Query operations using classes and properties:
+					Supports query operations using classes and their properties
+					rather than tables and their columns.
+					
+		Any framework which supports all these principles is said to be an
+		ORM Framework.
+		
+		E.g.
+			Hibernate
+			EclipseLink
+			Toplink
+			IBatis
+			
+		Metadata in Hibernate:
+			In Hibernate, metadata is of 2 types:
+				1. Mapping
+				2. Configuration
+			
+			Mapping:	
+				In mapping metadata, Java classes are mapped to relational
+				database tables. Fields are mapped to columns.
+				
+				There are 2 options for providing mapping metadata:
+					1. XML
+					2. Annotations
+					
+			Configuration:
+				In configuration metadata, the JDBC connection properties like
+				Driver class name, URL, username, password and so on need to
+				be provided so that based upon these properties Hibernate can
+				establish a connection with the database.
+				
+				There are 3 options for providing configuration metadata:
+					1. Properties File (.properties)
+					2. XML
+					3. Programmatically
+					
+		Hibernate Core API:	
+			The core API of Hibernate mainly consists of the following:
+				1. Session
+				2. SessionFactory
+				3. Configuration
+				4. Transaction
+				5. Query
+			
+			Session:
+				An interface from org.hibernate package.
+				A light-weight short lived object meant for handling CRUD 
+				operations.
+				
+			SessionFactory:
+				An interface from org.hibernate package.
+				A heavy-weight long lived object meant for obtaining the Session.
+				Since it is heavy-weight, it is recommended to have only 1 per 
+				application.
+				
+			Configuration:
+				A class from org.hibernate.cfg package.
+				It is used to configure Hibernate based upon metadata.
+				It is also used to obtain SessionFactory.
+				
+			Transaction:
+				An interface from org.hibernate package.
+				It is used to manage transactions.
+				It maintains atomicity.
+				It is mandatory while performing DML operations but not for DQL
+				operations.
+			
+			Query:
+				An interface from org.hibernate.query package.
+				It is used to perform query operations based upon classes and
+				their properties.	
+	
+	Getting Started:
+		Step 1:
+			Install Hibernate Library:
+				Since Hibernate is a framework, its library is distrbuted in the
+				form of several JAR files (Collection of .class files). 
+				Therefore to get started with Hibernate, it is necessary to make
+				these JAR files available in the CLASSPATH.
+				
+				These JAR files are available on web and need to be downloaded.
+				This can be done by 2 ways:
+					1. Download them manually
+					2. Download them using some build tools like Maven, Gradle etc.
+					
+				Build tool makes it easy to download the library.
+				
+				(Considering Maven)
+				Create a simple Maven based Java project.
+				Setup the environment for Java 17 or above
+					1. Project Facets (Java Version)
+					2. JDK (JRE) Version
+					3. Java Compiler Version
+					
+				Add Dependencies:
+					1. Hibernate Core 
+					2. MySQL	
+					
+		Step 2:
+			Create an Entity class.
+			The class of which an object is stored as a record in the database
+			table, is referred as an Entity class.		
+		
+		Step 3:
+			Provide Mapping Metadata
+			The entity class and its fields need to be mapped with DB table and
+			its columns.
+			In case of XML, it can be a file with any name but by convention, the
+			name is [Entity-Class-Name].hbm.xml.
+			This file must be placed under 'src/main/resources' folder.
+			
+		Step 4:
+			Provide Configuration Metadata
+			Hibernate uses configuration metadata for connecting to Database.
+			In case of XML file, the file can be created with any name.
+			Hibernate, by default looks for a file: hibernate.cfg.xml
+			This file must be placed under 'src/main/resources' folder.
+			
+		Step 5:
+			Write the main program
+			
+	Hibernate Workflow:
+		When the object of 'Configuration' class is created, Hibernate looks
+		for a file with name: hibernate.properties.
+		If found, Hibernate loads the entries from that file.
+		
+		If the configuration metadata is provided using hibernate.cfg.xml file,
+		it is necessary to intimate Hibernate about that.
+		It is done by calling 'configure()' method.
+		
+		If the file name is other than hibernate.cfg.xml, then an overloaded
+		'configure()' method is to be used.
+		
+		Once Hibernate is configured based upon configuration and mapping
+		metadata, a SessionFactory can be obtained.
+		
+	Implementing Standard Practices:
+		It is always advisable to follow standard practices.
+		1. Auto-Loading of JDBC Driver
+		2. Decoupling (Separating) the code for obtaining SessionFactory
+		3. Opening SessionFactory and Session using try-with-resources
+			construct.
+			
+	Hibernate Type System:
+		When providing mapping using XML file, it is always recommended to
+		provide the type of the field explicitly. 
+		Even though it is not provided, Hibernate finds the same using Java's
+		reflection semantics but this unnecessarily degrades the performance.
+		Whatever type is mentioned, eventually Hibernate maps it to the
+		appropriate Java type.
+		E.g.
+			Hibernate Type								Java Type
+				integer										java.lang.Integer
+				string										java.lang.String
+		
+		Providing ID Property:
+			Every entity class in Hibernate must declare at least one field
+			as an identity.
+			The ID field must be of some class-type.
+			Therefore it is recommended to use wrapper class types for ID
+			fields.
+			E.g.
+				int (Not Recommended)
+				Integer (Recommended)
+				
+	Mapping Metadata without XML:
+		In order to avoid XML, annotations are provided.
+		Annotations are of 2 types:
+			1. Hibernate Annotations - Provided by Hibernate itself
+			2. JPA Annotations - Provided by JPA
+			
+		JPA:
+			Jakarta Persistence API is a specification and it is implemented by any
+			ORM like Hibernate, Toplink, EclipseLink, IBatis etc.
+			
+	Configuration Metadata without XML:
+		Like Mapping, it is also possible to handle configuration specific metadata
+		without XML.
+		This is done programmatically using the relevant methods of 'Configuration'
+		class.
+
+	Performing Data Retrieval:
+		In order to retrieve data from database, the 'Session' interface provides
+		'find()' method.
+		This method loads an entity based upon its identity.
+	
+	Performing Data Updation:
+		In order to perform DML UPDATE, first it is necessary to load the entity
+		object on which updation is required.
+		Once the object is loaded, its state can be modified using setter methods. 
+		However, this changes the state of the Java object but not the database
+		table.
+		In order to perform UPDATE successfully, it is necessary to reflect the 
+		new state of Java object towards database table.	
+		
+		This is done by committing the transaction.
+		
+	Performing Data Deletion:
+		In order to perform DML DELETE, first it is necessary to load the entity
+		object which is to be deleted.
+		Since DELETE is a DML operation, to reflect the changes towards DB, it
+		is necessary to use Transaction.
+		To delete the record, 'Session' interface provides 'remove()' method.
+
+	Entity Life Cycle:
+		The instance of an entity class goes through several stages which are 
+		associated with Persistence Context.
+		
+		What is Persistence Context?
+		It is an object that is solely responsible for handling persistence related
+		operations.
+		
+		E.g.
+		In JDBC, it is java.sql.Connection and in Hibernate, it is org.hibernate.Session
+		
+		The life cycle involves 4 stages:
+			1. TRANSIENT
+			2. PERSISTENT
+			3. DETACHED
+			4. REMOVED
+			
+		TRANSIENT:
+			When the instance is not yet associated with persistence context, it is
+			said to be in TRANSIENT state.
+			The instance does not have its identity.
+		
+		PERSISTENT:
+			When the instance gets associated with the persistence context, it is 
+			said to be in PERSISTENT state.
+			The instance has its identity.	
+		
+		DETACHED:
+			The persistence context with which the instance was associated, if it is
+			closed, then the instance goes into DETACHED state.
+			
+		REMOVED:
+			When the entity is removed by performing removal operation, it results
+			into record deletion.
+			In this case, the entity is said to be in REMOVED state.
+			
+	Managing Hibernate's Session:
+		In Hibernate, 'Session' plays the role of Persistence Context.
+		It provides relevant methods for handling persistence related operations.
+		E.g.
+			persist()			: For DML INSERT
+			find()				: For SQL SELECT
+			remove()			: For DML DELETE
+	
+	Sometimes, the transactions are long running transactions and ideally once the
+	entity is loaded, it is not necessary to keep the session alive.
+	
+	Once the session is closed, the entity goes into DETACHED state.
+	When the changes are made into the DETACHED entity, to reflect them back
+	to DB, it is necessary to bring the entity back into PERSISTENT state.
+	
+	This is done by using 'merge()' method.
+	
+	E.g.
+		Session s1 = ........
+		Film loadedFilm = s1.find(.....) => loadedFilm goes into PERSISTENT state
+		s1.close(); => loadedFilm goes into DETACHED state.
+		loadedFilm.setTitle(..) => Changes the state of the entity which is in DETACHED
+											state
+		
+		Session s2 = .........
+		Transaction tx = s2.beginTransaction();
+			s2.merge(loadedFilm);  => Brings loadedFilm back into PERSISTENT state.
+		tx.commit();									
+									
+	Associations:
+		In business applications, an entity is associated with another entity
+		or several entities.
+		
+		This is called as association or relationship.
+		Once entities are associated, it is necessary to map them with DB
+		tables.
+		This type of mapping is called as Association Mapping.
+		
+		Associations are also known as Relationships.
+		
+		Relationships are of 4 types:
+			1. One to One
+			2. One to Many
+			3. Many to One
+			4. Many to Many
+			
+		Relationships are further divided into 2 types:
+			1. Unidirectional
+			2. Bidirectional
+		
+		It seems that there are 8 relationships but in reality, there are 7.
+		One to Many Bidirectional and Many to One Bidirectional are same.
+		
+	Unidirectional Associations:
+		In this case, one entity holds reference to another but the 2nd entity
+		does not anything about 1st.			
+		
+		The class design depend upon:
+			1. Direction
+			2. Multiplicity (One / Many)
+			
+		One To One Unidirectional:
+			This is the simplest form of association.
+			In this case, one entity holds a reference to another but the 2nd
+			entity does not hold any reference to the 1st.
+			
+			E.g.
+				A relationship between Employee and Passport
+					
+			In order to handle One to One association, JPA provides an
+			annotation: @OneToOne
+			In order to refer to Foreign Key column, JPA provides an
+			annotation: @JoinColumn
+			
+	One to Many Unidirectional:
+		In this case an entity holds multiple references of another entity
+		but the 2nd entity does not hold anything  about 1st.
+		On the DB side, foreign key column is always created in the table
+		which represents MANY side.
+		
+		E.g.
+			A relationship between CricketTeam and CricketPlayer.
+			(1 CricketTeam has many Cricket Players)
+			
+		While building an entity class which represents ONE side, ideally 
+		there has to be a convenient method defined so that a single 
+		object of another entity can be added as and when required. 
+		
+		In order to handle one to many association, JPA provides 
+		@OneToMany annotation.
+		To provide foreign key column name, @JoinColumn annotation is used.
+		But in this case, since the association is One to Many, the foreign key
+		column is created in the table which represents MANY side.
+		
+	Bidirectional Associations:
+		In this case, both the entities hold reference or references to each
+		other.
+		Developer has to set both ends of the association otherwise it leads
+		to the problem of data inconsistency.
+		Even though both the ends have been set, developer has to specify
+		from which end, changes are to be made persistent.
+		The END from which changes are made persistent, that side is called
+		as OWNING side and the other END or the other side is called as
+		INVERSE side.
+		
+		E.g.
+			The relationship between WebSeries and Actor
+			(In this example WebSeries is considered as the OWNING side
+			 and Actor is considered as the INVERSE side).
+			 
+		Since it is Many to Many association, on DB side a Junction Table
+		(Join Table) is required.
+		
+		To implement Many to Many association, JPA provides @ManyToMany
+		annotation.
+		In case of Bidirectional Association, one side is the OWNING side
+		and the another one is the INVERSE side.
+		The class which represents OWNING side, must provide the mapping
+		for the Junction Table.
+		
+		This is done by using @JoinTable annotation.
+		
+	Performing Query Operations:	
+		In a business application, retrieving the data is a very common 
+		requirement.
+		To retrieve the data, 'Session' interface provides 'find()' method.
+		The 'find()' method is used to find the single record against ID.
+		In order to retrieve multiple records, Hibernate provides a query
+		language known as HQL	(Hibernate Query Language).
+		
+		When the HQL is used, it gets converted into SQL and processed
+		on database side.
+		
+		HQL works with clauses:
+			1. FROM
+			2. SELECT
+		
+		To use HQL, Hibernate provides 'Query' interface from:
+			org.hibernate.query package.	
+			
+		FROM:
+			It is the simplest form of HQL.
+			It results into a collection of objects of entity class type.
+			It is especially used when the entire data of the object is to be
+			used; otherwise it leads to memory implications.
+			This can be resolved using SELECT clause.
+		
+		SELECT:
+			It is used to select the specific fields.
+			It results into memory allocation for only those fields which are
+			required.
+			It results into a data which is a collection of an array of type:
+			Object.
+			
+	Constructor Expression:
+		HQL provides Constructor Expression mechanism which allows to
+		populate a list holding objects of a specific Java class using the 
+		query string.
+		-------------------------------------------------------------------------------
+Spring:
+	What is Spring?
+		Spring is a Java based framework used to handle various aspects of
+		the application.
+		
+		E.g.
+			It can be used to acquire enterprise services (Higher End Services)
+			
+		List of Enterprise Services:
+			1. Scalability
+			2. Persistency
+			3. Availability
+			4. Transaction Management
+			5. Concurrency
+			6. Security
+			7. Asynchronous Messaging
+			
+	Spring Modules:
+		Spring can handle various aspects of the application with the help of
+		several modules.
+		
+		1. Spring Core
+		2. Spring AOP
+		3. Spring Data Access
+		4. Spring MVC
+		5. Spring REST
+		6. Spring Security
+		7. Spring Cloud
+		
+		Spring Core:
+			It is the module available at the base.
+			It is used to handle core functionalities of Spring.
+		
+		Spring AOP:
+			AOP stands for Aspect Oriented Programming.
+			It is used to decouple secondary concerns from primary concerns.
+			
+		Spring Data Access:
+			Spring does not provide any mechanism to interact with DB.
+			It provides hooks using which it is possible to integrate other
+			persistence related technologies like JDBC, Hibernate, JPA etc.
+			
+		Spring MVC:
+			It is a module used for building web applications.
+			MVC stands for Model-View-Controller.
+			
+		Spring REST:
+			It is a module used for building REST APIs.
+			REST stands for Representational State Transfer.
+			
+		Spring Security:
+			It is a module used to secure applications.
+			Typically, it is handled at 2 levels:
+				1. Authentication
+				2. Authorization
+				
+		Spring Cloud:
+			It is a module used to interact with cloud based services.
+			
+	Spring Core:
+		It handles core functionalities of Spring.
+		All the other modules are based upon this module.
+		It mainly consists of 2 functionalities:
+			1. Bean Management
+			2. Dependency Injection	
+			
+		Like Jakarta EE, Spring also follows Component Driven Architecture.	
+		
+		What is Component?
+			A component is an application level reusable piece of code.
+			
+		A component is of 2 types:
+			1. Unmanaged
+			2. Managed
+			
+		Unmanaged Component:
+			A component which is to be instantiated explicitly using 'new'
+			keyword, is called as Unmanaged Component.
+			Generally, Java SE platform consists of Unmanaged Components.
+			
+		Managed Component:
+			A component which gets instantiated implicitly without using 'new'
+			keyword, is called as Managed Component.
+			Generally, Jakarta EE platform consists of Managed Components.
+			
+		Unmanaged Components need not to be dependent always whereas
+		Managed Components always need to be dependent.
+		
+		Spring serves dual purpose. It can manage the components even 
+		though they are independent.
+		
+		The components which are managed by Spring's environment (Spring
+		Container) are called as Spring Beans.
+		
+		The class of which objects are to be managed by Spring, its 
+		corresponding bean must be registered with the environment of
+		Spring.
+		
+		This registration can be done by 2 ways:
+			1. Using XML
+			2. Without Using XML
+			
+	Getting Started:
+		Step 1:
+			Install Spring specific library JAR files using some build tool 
+			E.g. Maven.
+			
+		Step 2:
+			Create an Interface
+						
+		Step 3:
+			Create an Implementation Class of the interface.
+			
+		Step 4:
+			Register a bean of the class type in the Spring's configuration
+			unit.			
+			This can be done either using XML file or without XML.
+			In case of XML file, the file can have any name but by convention,
+			it is spring-config.xml.
+			This file can be placed anywhere either inside the project or even
+			outside the project.			
+			Generally, inside the project option is preferred and in the project,
+			ideally, it has to be placed under 'src/main/resources'
+			
+		Step 5:
+			Write a main class to obtain the bean and invoke its method.	
+			Once the bean is registered in Spring's configuration unit, at any
+			time it can be obtained by a client program.
+			In order to obtain the bean from the configuration unit, Spring
+			provides some service known as ApplicationContext. 
+			It is an interface which is implemented by several classes which
+			are also provided by Spring.
+			The most commonly used is FileSystemXmlApplicationContext.
+			It is used to obtain the bean registered using XML file which is
+			available on the File System.
+			It locates the file using file path.
+			If the file is present outside the project, absolute path is to be
+			specified.
+			If the file is present inside the project, it can be done using an
+			absolute path as well as relative path.
+			
+	Working with ApplicationContext:
+		Spring provides ApplicationContext using which a bean can be obtained
+		from the configuration unit.
+		It is an interface that is to be used through one of the several 
+		implementation 	classes.
+		
+		E.g.
+			FileSystemXmlApplicationContext
+			ClassPathXmlApplicationContext
+		
+		FileSystemXmlApplicationContext:
+			Loads the context from the XML file located on the file system.	
+			
+		ClassPathXmlApplicationContext:
+			Loads the context from the XML file located in the project's
+			CLASSPATH.
+			If the XML file is placed under 'src/main/resources', it gets
+			added automatically into Project's CLASSPATH.
+			Therefore, this location is the standard practice.
+			In this case, only File Name is required to load the file.
+			
+	Dependency Injection:
+		The beans which are registered in the Spring's environment, may 
+		have some dependencies.
+		When a client program requests for that bean, Spring has to inject
+		those dependencies into the bean and return it back to the client.
+		
+		This can be done by 2 ways:
+			1. Setter Injection
+				In this case, Spring injects the values for the properties of the
+				bean by calling 'setter' methods.
+				Therefore, this type of injection is called as Setter Injection.
+				
+			2. Constructor Injection
+				In this case, Spring injects the values for the properties of the
+				bean by calling parameterized constructor.	
+				In this case, by default Spring follows order of the parameters
+				as per the following:
+					In XML: Top to Bottom
+					In Java: Left to Right	
+				
+				However, it is possible to change the order. This is done by using
+				'index' attribute.					
+
+	Bean Wiring:											
+		The beans which are registered in the configuration unit may have
+		dependencies on other beans.
+		In this case, when the client program makes a request for the outer
+		bean, Spring has to build the inner bean first, wire it with the outer
+		bean and return that outer bean back to the client.		
+		
+		This is done by using 2 options:								
+			1. Using 'ref' attribute
+			2. Using '<ref>' element			
+			
+	Bean Loading:								
+		The beans which are registered in the configuration unit, get 
+		instantiated by Spring.
+		This process is known as Bean Loading.
+		Bean Loading is of 2 types:
+			1. EAGER
+			2. LAZY
+		
+		EAGER:
+			It is the default behaviour Spring follows.
+			Spring instantiates the bean as soon as the ApplicationContext is
+			initialized.
+			It does not wait for the client program to make the request.
+			
+		LAZY:
+			In this case, Spring instantiates the bean only when client program
+			makes a request for that bean.
+			This can be achieved using 'lazy-init' attribute and setting its value
+			to 'true'. 
+		
+	Bean Scope:
+		Every bean registered in the configuration unit has some scope.
+		The scope of the bean can be specified using 'scope' attribute.
+		There are 5 possible scopes:
+			1. singleton
+			2. prototype
+			3. request
+			4. session
+			5. global-session
+	
+		singleton:
+			It is the default scope of the bean.
+			If the same bean is requested multiple times, Spring returns the
+			same object.
+			
+		prototype:
+			It works exactly opposite to 'singleton'.
+			If the same bean is requested multiple times, Spring returns the
+			new object every time.
+			
+		request:
+			It is applicable only in Spring MVC environment.
+			The bean gets created and stored in the object of type:
+				jakarta.servlet.http.HttpServletRequest
+				
+		session:
+			It is applicable only in Spring MVC environment.
+			The bean gets created and stored in the object of type:
+				jakarta.servlet.http.HttpSession
+				
+		global-session
+			It is applicable only in Spring Portlet environment.
+			
+	Bean Configuration without XML:
+		When Spring framework was introduced, there was only 1 option 
+		available for bean configuration i.e. XML.
+		
+		The newer versions of Spring introduced an alternative:
+			Bean Configuration without XML.
+		
+		This option allows to start the things quickly and therefore it is
+		widely adopted by several Spring based projects.
+		
+		This can be done by using 2 options:
+			1. Java Based Configuration
+			2. Pure Annotation Based Configuration
+	
+		Java Based Configuration:
+			In this type of configuration, beans are configured using traditional
+			Java semantics i.e the 'new' keyword.
+			
+			The configuration unit is specified using a Java class.
+			Once the class is created, it must be intimated to Spring that the
+			class is a configuration specific class rather than just an ordinary
+			Java class.
+			
+			This is done by applying @Configuration annotation at the class
+			level.
+	
+			Once the configuration specific class is created, it can be used to
+			declare beans.
+			
+			This is done by defining a method which returns an object of the
+			class of which the bean is to be declared.	
+			
+			Once the method is defined, it must be intimated to Spring that
+			the method is a bean declaration method rather than just an 
+			ordinary method.
+			
+			This is done by applying @Bean annotation at the method level.
+			
+			Once the bean is declared using @Bean annotation, by default Spring
+			assigns an ID to the bean which is equal to the method name.
+		
+			Loading Beans:
+				Once the beans are declared with the help of @Configuration
+				and @Bean annotations, at any time, they can be obtained by a
+				client program.
+				
+				This is done using the class: AnnotationConfigApplicationContext
+				In order to associate configuration specific class with 
+				AnnotationConfigApplicationContext, the class provides register()
+				method.
+				Once the registration is done, it is necessary to refresh the
+				context so that changes are applied.
+				This is done using 'refresh()' method.
+				
+		Pure Annotation Based Configuration:
+			In this approach, beans are not registered using traditional Java
+			semantics; rather they are registered with the help of pure annotations
+			only.		
+			
+			Spring provides several stereo-type annotations to achieve this.
+			E.g.
+				@Component
+				It is used at the class level so that Spring can manage it.
+				
+			Once the bean is registered as a Component, it can be obtained using
+			AnnotationConfigApplicationContext's overloaded getBean() method.
+			
+			It accepts a reference of java.lang.Class type.
+			
+			Even though the class is annotated with @Component, it is not
+			picked up by Spring unless the corresponding package in which 
+			that class is declared, is scanned.
+			
+			This is done using @ComponentScan annotation. 
+			It is used to scan the package in which @Component annotated 
+			classes are present.
+			
+			It is to be applied at the configuration specific class level.
+			If no package name is mentioned, by default it picks up the package
+			in which configuration specific class exists and scans that package.
+			
+			
+			
+			
+			
+			
+		
+		
+		
+		
+				
+
+		
+		
+		
+		
+		
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"	
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean class = "example.spring.core.WelcomeService" id = "myBean"/>
+    <bean class = "example.spring.core.UserService" id = "myUserBean">
+    	<property name="name" value="Ana"/>
+    	<property name="age" value="35"/>
+    	<property name="weight" value="50.25"/>   
+    </bean> 
+     <bean class = "example.spring.core.UserService" id = "myUserBean2">
+    	<constructor-arg value="James" index = "2"/>
+    	<constructor-arg value="42" index = "0"/>
+    	<constructor-arg value="63.12" index = "1"/>   
+    </bean> 
+    <bean class = "example.spring.core.Address" id = "myAddressBean">
+    	<property name="city" value="Mumbai"/>
+    	<property name="pinCode" value="450022"/>
+    </bean>
+    <bean class = "example.spring.core.Address" id = "myAddressBean2">
+    	<property name="city" value="Pune"/>
+    	<property name="pinCode" value="422002"/>
+    </bean>
+     <bean class = "example.spring.core.Customer" id = "myCustomerBean">
+     	<property name="customerId" value="C01"/>
+    	<property name="name" value="Gautam"/>
+    	<!--  Using 'ref' attribute -->
+    	<!-- <property name="permanentAddress" ref="myAddressBean2"/> -->
+    	<!--  Using <ref> element -->
+    	<property name="permanentAddress">
+    		<ref bean = "myAddressBean"/>
+    	</property>
+     </bean>
+</beans>
+
+
+
+
+
+
+

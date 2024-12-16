@@ -1,0 +1,79 @@
+Task 1:
+	Create an entity class as per the following:
+		Package: it.edu
+		Name: Course
+		Fields:
+		courseId (String)
+		title (String)
+                provider (String) e.g. Udemy, Edureka	
+		duration (int) In terms of Hours
+		fees (int)
+
+	Write a Hibernate program that is used to insert
+	a record into Course_Master table.
+	(Table and Column names are of your choice) 	
+
+Task 2:
+	Create an entity class as per the following:
+		Package: inventory.entity
+		Name: Product
+		Fields:
+		productId (String)
+		name (String)
+                description (String)
+		price (float)
+
+	Write Hibernate programs to handle all the CRUD operations for
+	Product entity.
+	(Use annotation based mapping and programmatic configuration)
+	(Table and Column names are of your choice)
+
+Task 3:
+	Create 2 entity classes as per the following:
+	Package: news
+	 Name: Article
+	 Fields:
+	  articleId (String)
+	  subject (String)
+	  headLine (String)
+	  dateOfPublication (LocalDate)
+
+	 Name: Writer
+      	  writerId (String)
+          name (String)
+          Collection<Article> articles		
+
+	Implement One to Many Unidirectional 
+	Association to store Writer and Article objects.
+
+Task 4:
+	Use HQL to load all the writers along with
+	their articles and display the information.
+
+Task 5:
+	Create a class Director with following attributes:
+		fname (String)
+		lname (String)
+		age (int)
+	Create a class Film with following attributes:
+		title (String)
+		genre (String)
+		releaseYear (int)
+		directedBy (Director)
+
+	Declare the beans of both the types using XML file and write a Java program
+	that loads the bean of type Film and displays its contents.
+
+Task 6:
+	Modify the task 5 by replacing XML with Java Based Configuration and implement
+	the same functionality.
+		
+	
+	
+	
+	
+
+
+
+
+

@@ -11,6 +11,11 @@ npm i nodemon
 express Framework(MVC)
 npm i express
 
+embedded java script
+npm i ejs
+
+.gitignore
+instruct git to ignore/skip uploading the mentioned folder in repository
 
 -------------------------------------------------------------------------
 
@@ -59,4 +64,3 @@ db.users.remove({}); //delete all records form collection
 db.users.remove({age:27}); //delete particular records
 
 db.users.update({age:23},{$set:{name:'leon'}}) // update the data into collection
-
